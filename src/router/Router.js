@@ -4,7 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../components/Home'
-import Login from '../components/Login'
+import Login from '../components/Auth/Login'
+import Signup from '../components/Auth/Signup'
 import Profile from '../components/Profile'
 import Notifications from '../components/Notifications'
 import ContactUs from '../components/ContactUs'
@@ -83,6 +84,7 @@ export default function App() {
             <Stack.Navigator headerMode="none">
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Drawer" component={MyDrawer} />
+                <Stack.Screen name="Signup" component={Signup} />
             </Stack.Navigator>
         </NavigationContainer>
     );

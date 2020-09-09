@@ -5,5 +5,6 @@ export default {
     greenColor:'#239B56',
     darkMainColor:'#34495E',
     slowWhiteColor:'#BDC3C7',
-    theRedColor:'#E51C24'
+    theRedColor:'#E51C24',
+    // statusBarHeight:'50'
   };

@@ -41,7 +41,7 @@ const shops = [
         address: 'Islamabad ,Pakistan'
     }
 ]
-const WIDTH = Math.round(Dimensions.get('window').width); a = 2;
+const WIDTH = Math.round(Dimensions.get('window').width);
 class Home extends React.Component {
     constructor(props) {
         super(props)
