@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, Dimensions, TouchableOpacity, FlatList, Image} from 'react-native'
+import Header, {View, Text, StyleSheet, Dimensions, TouchableOpacity, FlatList, Image} from 'react-native'
 import ImagePicker from 'react-native-image-picker';
 import Icon1 from 'react-native-vector-icons/SimpleLineIcons';
 import {CardSection,} from './useableComponents/common';
@@ -54,7 +54,7 @@ class Home extends React.Component {
         return (
             <View style={styles.headerStyle}>
 
-                <View style={{flex: .85}}>
+                {/*<View style={{flex: .85}}>
                     {this.props.route.params.loginTypeSeller.toLowerCase() === 'seller'
                     &&
                     <View style={{flexDirection:"row"}}>
@@ -80,13 +80,17 @@ class Home extends React.Component {
                         paddingTop: verticalScale(10)
                     }} onPress={() => {
                         this.setState({isVisible: true})
-                    }}
-                        // this.chooseImagePickerOptions.bind(this)} 
-                    >
+                    }}>
                         <Icon1 name='plus' size={22} style={{}} color={constants.mainColor}/>
                     </TouchableOpacity>
                 </View>
-                }
+                }*/}
+
+                {/*<Header
+                    leftComponent={{ icon: 'menu', color: '#fff' }}
+                    centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+                    rightComponent={{ icon: 'home', color: '#fff' }}
+                />*/}
             </View>
         );
     }

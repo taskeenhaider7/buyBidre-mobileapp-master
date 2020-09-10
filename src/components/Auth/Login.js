@@ -3,21 +3,17 @@ import {
     View,
     Text,
     Image,
-    Linking,
     StyleSheet,
     TextInput,
     TouchableOpacity,
     Dimensions,
-    KeyboardAvoidingView,
-    Picker,
     AsyncStorage,
     ActivityIndicator,
     SafeAreaView,
     ScrollView,
 } from 'react-native';
 import constants from '../../Constants';
-import {Button, CardSection, Spinner} from '../useableComponents/common';
-// import auth from '@react-native-firebase/auth';
+import {CardSection} from '../useableComponents/common';
 import {StackActions} from '@react-navigation/native';
 import {WEBAPI} from '../extras/WEBAPI';
 
@@ -46,7 +42,7 @@ class Login extends React.Component {
     }
 
     gettingAsyncData = async () => {
-        let userIdSimple = await AsyncStorage.getItem('AccessTokenSimpleLogin');
+        let userIdSimple = await AsyncStorage.getItem('UserInfo');
         if (userIdSimple) {
             console.log("Already had toked")
             this.setState({loggedIn: false}, () => {
@@ -59,6 +55,12 @@ class Login extends React.Component {
         }
     }
     handleLogin = async () => {
+
+        this.setState({spinnerShow: true});
+        if (!this.state.email || !this.state.password) {
+            this.setState({spinnerShow: false});
+            alert("Enter valid Data")
+        }
         let obj = {
             email: this.state.email,
             password: this.state.password,
@@ -66,7 +68,8 @@ class Login extends React.Component {
         }
         await new WEBAPI().login(obj).then((response) => {
             if (response.message === "Login Successfully.") {
-                this.setState({...this.state,loggedIn:true });
+                this.setState({...this.state, loggedIn: true, spinnerShow: false});
+                AsyncStorage.setItem('UserInfo', response);
                 const pushAction = StackActions.replace('Drawer', {loginTypeSeller: response.type});
                 this.props.navigation.dispatch(pushAction);
             } else {
@@ -74,27 +77,22 @@ class Login extends React.Component {
             }
         })
 
-        this.setState({spinnerShow: true})
-        if (this.state.email == '' || this.state.password == '') {
-            this.setState({spinnerShow: false}, () => alert("Enter valid Data"))
+        /*else {
+           auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+               .then((response) => {
+                   this.setState({spinnerShow: false})
+                   console.log('The response is ', response)
+                   AsyncStorage.setItem('AccessTokenSimpleLogin', response.user.uid);
+                   const pushAction = StackActions.replace('Drawer', {screenProps: this.props.navigation});
+                   this.props.navigation.dispatch(pushAction);
+               })
+               .catch((error) => {
+                       this.setState({spinnerShow: false}, () => alert("Your error is :\n" + error))
+                       console.log('The error response is ', error)
+                   }
+               )
 
-            alert("Enter valid Data")
-        } else {
-            auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-                .then((response) => {
-                    this.setState({spinnerShow: false})
-                    console.log('The response is ', response)
-                    AsyncStorage.setItem('AccessTokenSimpleLogin', response.user.uid);
-                    const pushAction = StackActions.replace('Drawer', {screenProps: this.props.navigation});
-                    this.props.navigation.dispatch(pushAction);
-                })
-                .catch((error) => {
-                        this.setState({spinnerShow: false}, () => alert("Your error is :\n" + error))
-                        console.log('The error response is ', error)
-                    }
-                )
-
-        }
+       }*/
 
     }
 
