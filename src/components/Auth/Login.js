@@ -20,11 +20,8 @@ import {Button, CardSection, Spinner} from '../useableComponents/common';
 // import auth from '@react-native-firebase/auth';
 import {StackActions} from '@react-navigation/native';
 import {WEBAPI} from '../extras/WEBAPI';
-// import {} from './useableComponents/common';
 
 const WIDTH = Math.round(Dimensions.get('window').width);
-
-// a = 2;
 
 class Login extends React.Component {
     constructor(props) {
@@ -64,11 +61,12 @@ class Login extends React.Component {
     handleLogin = async () => {
         let obj = {
             email: this.state.email,
-            password: this.state.password
-            //type: type
+            password: this.state.password,
+            type: "seller"
         }
         await new WEBAPI().login(obj).then((response) => {
             if (response.message === "Login Successfully.") {
+                this.setState({...this.state,loggedIn:true });
                 const pushAction = StackActions.replace('Drawer', {loginTypeSeller: response.type});
                 this.props.navigation.dispatch(pushAction);
             } else {
@@ -100,78 +98,6 @@ class Login extends React.Component {
 
     }
 
-    handleSignup = async (type) => {
-        let obj = {
-            "fname": "ali",
-            "lname": "account",
-            "email": this.state.email,
-            "password": this.state.password,
-            "type": this.state.type,
-            "addr1": "test address",
-            "city": "Bainbridge",
-            "postal": "21904",
-            "country": "United States",
-            "mobile": "03001111",
-            "acctype": "seller",
-            "statename": "barcelena",
-            "cty": "xyz",
-            "zipcode": "12345"
-        }
-
-        await new WEBAPI().signup(obj).then((response) => {
-            console.log('', response)
-            if (response.message === "Signup Successfully") {
-                const pushAction = StackActions.replace('Drawer', {loginTypeSeller: response.type});
-                this.props.navigation.dispatch(pushAction);
-            } else {
-                alert(response.message)
-            }
-        })
-        // const pushAction = StackActions.replace('Drawer', { loginTypeSeller: this.state.loginTypeSeller });
-        // this.props.navigation.dispatch(pushAction);
-        // this.setState({ spinnerShow: true })
-        // if (this.state.email == '' || this.state.password == '') {
-        //     this.setState({ spinnerShow: false }, () => alert("Enter valid Data"))
-
-        //     alert("Enter valid Data")
-        // }
-        // else {
-        //     auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-        //         .then((response) => {
-        //             this.setState({ spinnerShow: false }, () => alert('New Account is Created'))
-        //             console.log('The create user response is ', response)
-        //             AsyncStorage.setItem('AccessTokenSimpleLogin', response.user.uid);
-
-        //         })
-        //         .catch((error) => {
-        //             this.setState({ spinnerShow: false }, () =>
-        //                 alert("Your error is :\n" + error)
-        //             )
-        //         })
-        // }
-    }
-    resetPassword = () => {
-        const pushAction = StackActions.replace('Drawer', {loginTypeSeller: this.state.loginTypeSeller});
-        this.props.navigation.dispatch(pushAction);
-        // this.setState({ spinnerShow: true })
-        // if (this.state.email == '') {
-        //     this.setState({ spinnerShow: false }, () => alert("Enter valid Data"))
-        //     alert("Enter valid Data")
-        // }
-        // else {
-        //     auth().sendPasswordResetEmail(this.state.email).then((response) => {
-        //         this.setState({ spinnerShow: false }, () => alert('Email has been send '))
-        //         console.log('The email reset response is ', response)
-        //     })
-        //         .catch((error) => {
-        //             this.setState({ spinnerShow: false }, () =>
-        //                 alert("Your error is :\n" + error)
-        //             )
-        //         })
-        // }
-
-    }
-
     showSpinner(size) {
         return (
             <View style={{}}>
@@ -185,8 +111,6 @@ class Login extends React.Component {
     }
 
     render() {
-        console.disableYellowBox = true
-        // console.log('The states are',this.state)
         return (
             <SafeAreaView style={styles.container}>
                 <ScrollView style={styles.scrollView}>
