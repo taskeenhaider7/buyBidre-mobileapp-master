@@ -3,14 +3,15 @@ import Header, {View, Text, StyleSheet, Dimensions, TouchableOpacity, FlatList, 
 import ImagePicker from 'react-native-image-picker';
 import Icon1 from 'react-native-vector-icons/SimpleLineIcons';
 import {CardSection,} from './useableComponents/common';
-import constants from '../Constants'
+import constants from '../Constants';
 import {Card, Avatar, Searchbar} from 'react-native-paper'
-import {scale, verticalScale} from './extras/scalingComponent'
-import {WEBAPI} from './extras/WEBAPI'
+import {scale, verticalScale} from './extras/scalingComponent';
+import {WEBAPI} from './extras/WEBAPI';
 
 import {Overlay, Input, Button, Icon} from 'react-native-elements'
 import {WebView} from 'react-native-webview';
-import RNFetchBlob from 'rn-fetch-blob'
+import RNFetchBlob from 'rn-fetch-blob';
+import DropDownPicker from "react-native-dropdown-picker";
 
 
 const options = {
@@ -21,11 +22,68 @@ const options = {
 
 const WIDTH = Math.round(Dimensions.get('window').width);
 
+const c_list = [{
+    "value": "15",
+    "label": "New category",
+
+}, {
+    "value": "10",
+    "label": "Single Family",
+
+}, {
+    "value": "11",
+    "label": "Bank Owned",
+
+}, {
+    "value": "12",
+    "label": "Land"
+}, {
+    "value": "13",
+    "label": "Townhouse  ",
+
+}, {
+    "value": "14",
+    "label": "Office",
+
+}, {
+    "value": "16",
+    "label": "New",
+
+}]
+
 class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             avatarSource: [],
+            categoryList: [{
+                "value": "15",
+                "label": "New category",
+
+            }, {
+                "value": "10",
+                "label": "Single Family",
+
+            }, {
+                "value": "11",
+                "label": "Bank Owned",
+
+            }, {
+                "value": "12",
+                "label": "Land"
+            }, {
+                "value": "13",
+                "label": "Townhouse  ",
+
+            }, {
+                "value": "14",
+                "label": "Office",
+
+            }, {
+                "value": "16",
+                "label": "New",
+
+            }],
             isVisible: false,
             shopList: [],
             title: '',
@@ -34,14 +92,22 @@ class Home extends React.Component {
             country: '',
             showSearchData: false,
             search: '',
-            searchData: ''
+            searchData: '',
         }
     }
 
     componentDidMount() {
         this.fetchProducts()
+        this.getCategoryList()
     }
 
+    getCategoryList = async () => {
+        await new WEBAPI().getCategories().then((response) => {
+            this.setState({
+                categoryList: response.records
+            })
+        })
+    }
     fetchProducts = async () => {
         await new WEBAPI().getProducts().then((response) => {
             console.log('data response is products', response)
@@ -53,44 +119,10 @@ class Home extends React.Component {
     renderHeader = () => {
         return (
             <View style={styles.headerStyle}>
+                <Text>hy home</Text>
 
-                {/*<View style={{flex: .85}}>
-                    {this.props.route.params.loginTypeSeller.toLowerCase() === 'seller'
-                    &&
-                    <View style={{flexDirection:"row"}}>
-                        <Text style={styles.textStyleHeader}>SELLER</Text>
-                        <Text style={styles.textStyleLogout}>Logout</Text>
-                    </View>
-                    }
-                    {this.props.route.params.loginTypeSeller.toLowerCase() === 'buyer'
-                    &&
-                    <Text style={styles.textStyleHeader}>BUYER</Text>
-                    }
-                    {this.props.route.params.loginTypeSeller.toLowerCase() === 'admin'
-                    &&
-                    <Text style={styles.textStyleHeader}>ADMIN</Text>}
 
-                </View>
-                {this.props.route.params.loginTypeSeller.toLowerCase() === 'seller'
-                &&
-                <View style={{flex: .15}}>
-                    <TouchableOpacity style={{
-                        alignContent: 'center',
-                        alignSelf: 'center',
-                        paddingTop: verticalScale(10)
-                    }} onPress={() => {
-                        this.setState({isVisible: true})
-                    }}>
-                        <Icon1 name='plus' size={22} style={{}} color={constants.mainColor}/>
-                    </TouchableOpacity>
-                </View>
-                }*/}
 
-                {/*<Header
-                    leftComponent={{ icon: 'menu', color: '#fff' }}
-                    centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-                    rightComponent={{ icon: 'home', color: '#fff' }}
-                />*/}
             </View>
         );
     }
@@ -327,6 +359,57 @@ class Home extends React.Component {
                     value={this.state.search}
                     onChangeText={this.onChangeSearch}
                 />
+                <View style={{marginTop: verticalScale(0)}}>
+                    <DropDownPicker
+                        items={[{
+                            "value": "15",
+                            "label": "New category",
+
+                        }, {
+                            "value": "10",
+                            "label": "Single Family",
+
+                        }, {
+                            "value": "11",
+                            "label": "Bank Owned",
+
+                        }, {
+                            "value": "12",
+                            "label": "Land"
+                        }, {
+                            "value": "13",
+                            "label": "Townhouse  ",
+
+                        }, {
+                            "value": "14",
+                            "label": "Office",
+
+                        }, {
+                            "value": "16",
+                            "label": "New",
+
+                        }]}
+                        defaultIndex={0}
+                        placeholder={'Select Type'}
+                        itemStyle={{
+                            justifyContent: 'flex-start', borderBottomColor: "black",
+
+                        }}
+
+                        dropDownStyle={{backgroundColor: 'white', borderColor: "grey"}}
+                        containerStyle={{
+                            height: 50,
+                            width: WIDTH,
+                            marginHorizontal: 0,
+                            marginTop: 2,
+                        }}
+                        onChangeItem={item => this.setState({
+                            ...this.state,
+                            searchData: this.state.shopList.filter(item => item.category.includes(item.value))
+                        })}
+                    />
+                </View>
+
             </View>
         )
     }

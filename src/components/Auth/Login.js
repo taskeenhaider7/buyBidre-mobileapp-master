@@ -64,12 +64,12 @@ class Login extends React.Component {
         let obj = {
             email: this.state.email,
             password: this.state.password,
-            type: "seller"
+            type: "buyer"
         }
         await new WEBAPI().login(obj).then((response) => {
             if (response.message === "Login Successfully.") {
                 this.setState({...this.state, loggedIn: true, spinnerShow: false});
-                AsyncStorage.setItem('UserInfo', response);
+                AsyncStorage.setItem('UserInfo', "");
                 const pushAction = StackActions.replace('Drawer', {loginTypeSeller: response.type});
                 this.props.navigation.dispatch(pushAction);
             } else {

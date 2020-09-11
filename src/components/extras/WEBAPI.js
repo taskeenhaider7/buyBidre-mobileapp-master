@@ -10,6 +10,9 @@ export class WEBAPI {
     //GET TOKEN
     _GET_PRODUCTS = '/product/read.php';
 
+    //GET CATEGORIES
+    _GET_CATEGORIES = '/category/read.php';
+
     LOGIN = 'users/login.php'
     SIGNUP = '/users/create.php'
     POST_DATA = "product/create.php"
@@ -65,6 +68,15 @@ export class WEBAPI {
     }
     getProducts() {
         let url = `${this.HOST_NAME}${this._GET_PRODUCTS}`;
+        console.log('hy beru: get Products', url);
+        let request = {
+            method: 'GET',
+        };
+        return this.sendRequest(url, request);
+    }
+
+    getCategories() {
+        let url = `${this.HOST_NAME}${this._GET_CATEGORIES}`;
         console.log('hy beru: get Products', url);
         let request = {
             method: 'GET',
