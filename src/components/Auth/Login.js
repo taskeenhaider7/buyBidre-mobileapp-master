@@ -45,7 +45,7 @@ class Login extends React.Component {
         let userIdSimple = await AsyncStorage.getItem('UserInfo');
         if (userIdSimple) {
             console.log("Already had toked")
-            this.setState({loggedIn: false}, () => {
+            this.setState({loggedIn: true}, () => {
                 const pushAction = StackActions.replace('Drawer', {screenProps: this.props.navigation});
                 this.props.navigation.dispatch(pushAction);
             });
@@ -69,11 +69,13 @@ class Login extends React.Component {
         await new WEBAPI().login(obj).then((response) => {
             if (response.message === "Login Successfully.") {
                 this.setState({...this.state, loggedIn: true, spinnerShow: false});
-                AsyncStorage.setItem('UserInfo', "");
+                AsyncStorage.setItem('UserInfo', response.uid.toString());
+                AsyncStorage.setItem('userType', response.type.toString());
                 const pushAction = StackActions.replace('Drawer', {loginTypeSeller: response.type});
                 this.props.navigation.dispatch(pushAction);
             } else {
                 alert(response.message);
+                this.setState({spinnerShow: false});
             }
         })
 

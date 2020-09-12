@@ -54,7 +54,17 @@ const BottomScreen = ({route, navigation}) => {
         </BottomNav.Navigator>
     )
 }
+
+const getUserType = async ()=>{
+    let userType = await AsyncStorage.getItem('userType');
+    return userType;
+}
 const MyDrawer = ({route, navigation}) => {
+    const userType = getUserType();
+    console.log(userType)
+    if(userType){
+        route.params.loginTypeSeller = "seller"
+    }
     return (
         <Drawer.Navigator
             drawerContentOptions={{
@@ -82,9 +92,17 @@ export default function App() {
     return (
         <NavigationContainer>
             <Stack.Navigator headerMode="none">
-                <Stack.Screen name="Login" component={Login}/>
-                <Stack.Screen name="Signup" component={Signup}/>
-                <Stack.Screen name="Drawer" component={MyDrawer}/>
+                {
+                    AsyncStorage.getItem('UserInfo') ?
+                        <>
+                            <Stack.Screen name="Drawer" component={MyDrawer}/>
+                        </>
+                        : <>
+                            <Stack.Screen name="Login" component={Login}/>
+                            <Stack.Screen name="Signup" component={Signup}/>
+                            </>
+
+                }
             </Stack.Navigator>
         </NavigationContainer>
     );

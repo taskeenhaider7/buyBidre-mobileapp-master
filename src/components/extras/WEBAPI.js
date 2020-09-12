@@ -3,7 +3,7 @@ import RNFetchBlob from 'rn-fetch-blob'
 export class WEBAPI {
 
     // HOST_NAME
-    HOST_NAME = "https://buybidre.com/api/"
+    HOST_NAME = "http://192.168.10.8/api/"
 
     //END POINTS
 
@@ -86,7 +86,7 @@ export class WEBAPI {
     postData(data) {
         let url = `${this.HOST_NAME}${this.POST_DATA}`;
         console.log('hy beru: get Products', url);
-        
+
         return this.sendRequestIMAGES(url,'',data);
     }
 

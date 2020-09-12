@@ -119,10 +119,11 @@ class Home extends React.Component {
     renderHeader = () => {
         return (
             <View style={styles.headerStyle}>
-                <Text>hy home</Text>
-
-
-
+                <Header
+                    leftComponent={{ icon: 'menu', color: '#fff' }}
+                    centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+                    rightComponent={{ icon: 'home', color: '#fff' }}
+                />
             </View>
         );
     }
@@ -405,7 +406,8 @@ class Home extends React.Component {
                         }}
                         onChangeItem={item => this.setState({
                             ...this.state,
-                            searchData: this.state.shopList.filter(item => item.category.includes(item.value))
+                            showSearchData: true,
+                            searchData: this.state.shopList.filter(item => item.category.toString().includes(item.value.toString()))
                         })}
                     />
                 </View>
@@ -577,7 +579,7 @@ const styles = StyleSheet.create({
         height: 30,
         borderTopWidth: 0.3,
         borderColor: 'white',
-        // backgroundColor: '#FF9800', 
+        // backgroundColor: '#FF9800',
         justifyContent: 'flex-end',
         alignItems: 'center',
         // position: 'absolute',
