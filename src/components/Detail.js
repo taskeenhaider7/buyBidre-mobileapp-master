@@ -26,32 +26,7 @@ class Detail extends React.Component {
     }
 
     componentDidMount() {
-        const data = this.props.route.params.item.item;
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        // console.log(JSON.parse(this.state.data.featured_image.uri))
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
-        console.log(".")
+        const data = this.props.route.params.item;
         this.setState({ data:data})
         console.log(data.title)
 
@@ -61,7 +36,8 @@ class Detail extends React.Component {
     }
 
     render() {
-        const data = this.props.route.params.item.item;
+        const data = this.props.route.params.item;
+
         let image = JSON.parse(data.featured_image).url
         let Address = JSON.parse(data.address)
 
@@ -78,72 +54,72 @@ class Detail extends React.Component {
                                 {data.title}
                             </Text>
                         </View>
-                           <View>
-                               <Card>
-                                   <Card.Cover source={{ uri: image }}
-                                             style={{
-                                                 height: 300,
-                                                 flex: 0,
-                                                 width: WIDTH,
-                                                 marginLeft: 2,
-                                                 marginRight: 2,
-                                                 borderRadius: 5
-                                             }}/>
-                                   <Card.Content>
-                                       <Paragraph>Three levels 4 bedroom & 21 street</Paragraph>
-                                   </Card.Content>
-                                   <Card.Actions>
-                                       <Text>Property filters  </Text>
-                                       <Button >add</Button>
-                                   </Card.Actions>
-                               </Card>
-                           </View>
-                            <View style={{marginTop: 10}}>
-                                <DataTable>
-                                    <DataTable.Header>
-                                        <DataTable.Title>Address</DataTable.Title>
-                                        <DataTable.Title numeric>Text Id #</DataTable.Title>
-                                        <DataTable.Title numeric>Contact</DataTable.Title>
-                                    </DataTable.Header>
+                        <View>
+                            <Card>
+                                <Card.Cover source={{ uri: image }}
+                                            style={{
+                                                height: 300,
+                                                flex: 0,
+                                                width: WIDTH,
+                                                marginLeft: 2,
+                                                marginRight: 2,
+                                                borderRadius: 5
+                                            }}/>
+                                <Card.Content>
+                                    <Paragraph>Three levels 4 bedroom & 21 street</Paragraph>
+                                </Card.Content>
+                                <Card.Actions>
+                                    <Text>Property filters  </Text>
+                                    <Button >add</Button>
+                                </Card.Actions>
+                            </Card>
+                        </View>
+                        <View style={{marginTop: 10}}>
+                            <DataTable>
+                                <DataTable.Header>
+                                    <DataTable.Title>Address</DataTable.Title>
+                                    <DataTable.Title numeric>Text Id #</DataTable.Title>
+                                    <DataTable.Title numeric>Contact</DataTable.Title>
+                                </DataTable.Header>
 
-                                    <DataTable.Row>
-                                        <DataTable.Cell
-                                            onPress={
-                                                () => {
-                                                    alert("ashraf town pindorian islamabad")
-                                                }
+                                <DataTable.Row>
+                                    <DataTable.Cell
+                                        onPress={
+                                            () => {
+                                                alert("ashraf town pindorian islamabad")
                                             }
-                                        >{this.completeAddress(Address)}</DataTable.Cell>
-                                        <DataTable.Cell numeric>1</DataTable.Cell>
-                                        <DataTable.Cell numeric>0316-5180106</DataTable.Cell>
-                                    </DataTable.Row>
-                                </DataTable>
+                                        }
+                                    >{this.completeAddress(Address)}</DataTable.Cell>
+                                    <DataTable.Cell numeric>1</DataTable.Cell>
+                                    <DataTable.Cell numeric>0316-5180106</DataTable.Cell>
+                                </DataTable.Row>
+                            </DataTable>
 
-                            </View>
-                            <View style={{margin: 5}}><Text> </Text></View>
-                            <View style={{marginTop: 10}}>
-                                <DataTable>
-                                    <DataTable.Header>
-                                        <DataTable.Title>Bedrooms</DataTable.Title>
-                                        <DataTable.Title >Bathrooms</DataTable.Title>
-                                        <DataTable.Title numeric>Half Bathrooms</DataTable.Title>
-                                        <DataTable.Title numeric>Area</DataTable.Title>
-                                        <DataTable.Title numeric>Floor</DataTable.Title>
+                        </View>
+                        <View style={{margin: 5}}><Text> </Text></View>
+                        <View style={{marginTop: 10}}>
+                            <DataTable>
+                                <DataTable.Header>
+                                    <DataTable.Title>Bedrooms</DataTable.Title>
+                                    <DataTable.Title >Bathrooms</DataTable.Title>
+                                    <DataTable.Title numeric>Half Bathrooms</DataTable.Title>
+                                    <DataTable.Title numeric>Area</DataTable.Title>
+                                    <DataTable.Title numeric>Floor</DataTable.Title>
 
-                                    </DataTable.Header>
+                                </DataTable.Header>
 
-                                    <DataTable.Row>
+                                <DataTable.Row>
 
-                                        <DataTable.Cell>1</DataTable.Cell>
-                                        <DataTable.Cell >2</DataTable.Cell>
-                                        <DataTable.Cell >3</DataTable.Cell>
-                                        <DataTable.Cell numeric>4000</DataTable.Cell>
-                                        <DataTable.Cell numeric>4</DataTable.Cell>
+                                    <DataTable.Cell>1</DataTable.Cell>
+                                    <DataTable.Cell >2</DataTable.Cell>
+                                    <DataTable.Cell >3</DataTable.Cell>
+                                    <DataTable.Cell numeric>4000</DataTable.Cell>
+                                    <DataTable.Cell numeric>4</DataTable.Cell>
 
-                                    </DataTable.Row>
-                                </DataTable>
+                                </DataTable.Row>
+                            </DataTable>
 
-                            </View>
+                        </View>
                         <View style={{marginTop: 10}}>
                             <DataTable>
                                 <DataTable.Header>
@@ -174,8 +150,8 @@ class Detail extends React.Component {
                                 alert("will go to term and conditions")
                             }}>
                                 <Text style={{color: constants.whiteColor, fontSize: 12}}>
-                                Terms and Condition | privacy & policy
-                            </Text>
+                                    Terms and Condition | privacy & policy
+                                </Text>
                             </TouchableOpacity>
 
                         </View>
