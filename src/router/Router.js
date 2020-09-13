@@ -12,7 +12,8 @@ import ContactUs from '../components/ContactUs'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/Fontisto';
 import {createStackNavigator} from '@react-navigation/stack';
-import { AsyncStorage } from 'react-native';
+import Detail from "../components/Detail";
+// import { AsyncStorage } from 'react-native';
 
 
 const Drawer = createDrawerNavigator();
@@ -50,21 +51,27 @@ const BottomScreen = ({route, navigation}) => {
                     <Icon2 name="hipchat" color={color} size={size}/>
                 ),
             }}/>
+            <BottomNav.Screen name="Detail" component={Detail} options={{
+                tabBarLabel: 'Detail',
+                tabBarIcon: ({color, size}) => (
+                    <Icon2 name="detail" color={color} size={size}/>
+                ),
+            }}/>
 
         </BottomNav.Navigator>
     )
 }
 
-const getUserType = async ()=>{
-    let userType = await AsyncStorage.getItem('userType');
-    return userType;
-}
+// const getUserType = async ()=>{
+//     let userType = await AsyncStorage.getItem('userType');
+//     return userType;
+// }
 const MyDrawer = ({route, navigation}) => {
-    const userType = getUserType();
-    console.log(userType)
-    if(userType){
-        route.params.loginTypeSeller = "seller"
-    }
+    // const userType = getUserType();
+    // console.log(userType)
+    // if(userType){
+    //     route.params.loginTypeSeller = "seller"
+    // }
     return (
         <Drawer.Navigator
             drawerContentOptions={{
@@ -82,6 +89,7 @@ const MyDrawer = ({route, navigation}) => {
             <Drawer.Screen initialParams={route.params} name="Home" component={Home}/>
             <Drawer.Screen initialParams={route.params} name="Notifications" component={Notifications}/>
             <Drawer.Screen initialParams={route.params} name="ContactUS" component={ContactUs}/>
+            <Drawer.Screen initialParams={route.params} name="Detail" component={Detail}/>
 
         </Drawer.Navigator>
 
@@ -92,17 +100,11 @@ export default function App() {
     return (
         <NavigationContainer>
             <Stack.Navigator headerMode="none">
-                {
-                    AsyncStorage.getItem('UserInfo') ?
-                        <>
-                            <Stack.Screen name="Drawer" component={MyDrawer}/>
-                        </>
-                        : <>
+
                             <Stack.Screen name="Login" component={Login}/>
                             <Stack.Screen name="Signup" component={Signup}/>
-                            </>
+                            <Stack.Screen name="Drawer" component={MyDrawer}/>
 
-                }
             </Stack.Navigator>
         </NavigationContainer>
     );

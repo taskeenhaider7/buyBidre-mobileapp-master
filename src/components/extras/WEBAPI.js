@@ -3,18 +3,18 @@ import RNFetchBlob from 'rn-fetch-blob'
 export class WEBAPI {
 
     // HOST_NAME
-    HOST_NAME = "http://192.168.10.8/api/"
+    HOST_NAME = "https://buybidre.com/api/"
 
     //END POINTS
 
     //GET TOKEN
-    _GET_PRODUCTS = '/product/read.php';
+    _GET_PRODUCTS = 'product/read.php';
 
     //GET CATEGORIES
-    _GET_CATEGORIES = '/category/read.php';
+    _GET_CATEGORIES = 'category/read.php';
 
     LOGIN = 'users/login.php'
-    SIGNUP = '/users/create.php'
+    SIGNUP = 'users/create.php'
     POST_DATA = "product/create.php"
 
     async sendRequest(url, request) {

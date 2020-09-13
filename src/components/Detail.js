@@ -1,70 +1,190 @@
 import React from 'react'
-import {Card, Avatar, Searchbar} from 'react-native-paper'
-import {CardSection} from "./useableComponents/common";
-import {Image, Text, View} from "react-native";
+import {Card, Avatar,Paragraph, DataTable, Searchbar} from 'react-native-paper'
+
+
+const WIDTH = Math.round(Dimensions.get('window').width);
+import Header, {
+    View,
+    Text,
+    StyleSheet,
+    Dimensions,
+    TouchableOpacity,
+    FlatList,
+    Image,
+    ScrollView,
+    SafeAreaView
+} from 'react-native'
+import constants from "../Constants";
+import {Button} from "react-native-elements";
 
 class Detail extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            data:null
+        }
     }
 
     componentDidMount() {
+        const data = this.props.route.params.item.item;
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        // console.log(JSON.parse(this.state.data.featured_image.uri))
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        console.log(".")
+        this.setState({ data:data})
+        console.log(data.title)
+
     }
-
-
-    renderBuyer = (item) => {
-        let name = item.item.title
-        let price = JSON.parse(item.item.price).price
-        let image = JSON.parse(item.item.featured_image).url
-        let address = JSON.parse(item.item.address).city
-        return (
-            <Card style={{margin: 10}} key={Math.random().toString()}>
-
-                <View style={{padding: 10}}>
-                    <View style={{flexDirection: 'row', flex: 1}}>
-                        <View style={{flex: 1.5}}>
-                            <Avatar.Image size={50} source={{uri: item.item.ownerImg}}
-                                          style={{backgroundColor: '#74C5D5'}}/>
-                        </View>
-                        <View style={{flex: 6.5, padding: 5}}>
-                            <Text style={{fontSize: 14, fontWeight: 'bold', color: constants.whiteColor}}>
-                                {name}
-                            </Text>
-                            <Text style={{fontSize: 13, color: 'black'}}>
-                                {address}
-                            </Text>
-                        </View>
-                        <View style={{flex: 2, padding: 5}}>
-                            <Text style={{fontSize: 12, color: 'black', fontWeight: 'bold'}}>
-                                Price: {price}
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-                <Card.Cover source={{uri: image}}/>
-
-            </Card>
-        )
+    completeAddress( address ){
+        return ( address.addr1 +" "+ address.addr2+" "+address.city+" "+address.state+" "+address.country+" "+address.postal );
     }
 
     render() {
+        const data = this.props.route.params.item.item;
+        let image = JSON.parse(data.featured_image).url
+        let Address = JSON.parse(data.address)
+
+        // console.log(this.state.data)
         return (
-            <View style={styles.MainContainer}>
-                <Card>
-                    <CardSection>
-                        <Image source={image.item.uri} style={{
-                            height: 300,
-                            flex: 1,
-                            width: null,
-                            marginLeft: 2,
-                            marginRight: 2,
-                            marginBottom: 2,
-                            borderRadius: 5
-                        }}/>
-                    </CardSection>
-                </Card>
-            </View>
+            <SafeAreaView style={styles.MainContainer}>
+                <ScrollView>
+                    <View style={styles.MainContainer}>
+
+                        <View>
+                            <Text style={{
+                                textAlign: "center", fontSize: 28, margin: 15
+                            }}>
+                                {data.title}
+                            </Text>
+                        </View>
+                           <View>
+                               <Card>
+                                   <Card.Cover source={{ uri: image }}
+                                             style={{
+                                                 height: 300,
+                                                 flex: 0,
+                                                 width: WIDTH,
+                                                 marginLeft: 2,
+                                                 marginRight: 2,
+                                                 borderRadius: 5
+                                             }}/>
+                                   <Card.Content>
+                                       <Paragraph>Three levels 4 bedroom & 21 street</Paragraph>
+                                   </Card.Content>
+                                   <Card.Actions>
+                                       <Text>Property filters  </Text>
+                                       <Button >add</Button>
+                                   </Card.Actions>
+                               </Card>
+                           </View>
+                            <View style={{marginTop: 10}}>
+                                <DataTable>
+                                    <DataTable.Header>
+                                        <DataTable.Title>Address</DataTable.Title>
+                                        <DataTable.Title numeric>Text Id #</DataTable.Title>
+                                        <DataTable.Title numeric>Contact</DataTable.Title>
+                                    </DataTable.Header>
+
+                                    <DataTable.Row>
+                                        <DataTable.Cell
+                                            onPress={
+                                                () => {
+                                                    alert("ashraf town pindorian islamabad")
+                                                }
+                                            }
+                                        >{this.completeAddress(Address)}</DataTable.Cell>
+                                        <DataTable.Cell numeric>1</DataTable.Cell>
+                                        <DataTable.Cell numeric>0316-5180106</DataTable.Cell>
+                                    </DataTable.Row>
+                                </DataTable>
+
+                            </View>
+                            <View style={{margin: 5}}><Text> </Text></View>
+                            <View style={{marginTop: 10}}>
+                                <DataTable>
+                                    <DataTable.Header>
+                                        <DataTable.Title>Bedrooms</DataTable.Title>
+                                        <DataTable.Title >Bathrooms</DataTable.Title>
+                                        <DataTable.Title numeric>Half Bathrooms</DataTable.Title>
+                                        <DataTable.Title numeric>Area</DataTable.Title>
+                                        <DataTable.Title numeric>Floor</DataTable.Title>
+
+                                    </DataTable.Header>
+
+                                    <DataTable.Row>
+
+                                        <DataTable.Cell>1</DataTable.Cell>
+                                        <DataTable.Cell >2</DataTable.Cell>
+                                        <DataTable.Cell >3</DataTable.Cell>
+                                        <DataTable.Cell numeric>4000</DataTable.Cell>
+                                        <DataTable.Cell numeric>4</DataTable.Cell>
+
+                                    </DataTable.Row>
+                                </DataTable>
+
+                            </View>
+                        <View style={{marginTop: 10}}>
+                            <DataTable>
+                                <DataTable.Header>
+                                    <DataTable.Title>User</DataTable.Title>
+                                    <DataTable.Title >Type</DataTable.Title>
+                                    <DataTable.Title >Fill Form</DataTable.Title>
+                                </DataTable.Header>
+
+                                <DataTable.Row>
+                                    <DataTable.Cell>
+                                        view user</DataTable.Cell>
+                                    <DataTable.Cell >{data.prop_for}</DataTable.Cell>
+                                    <DataTable.Cell >fill form</DataTable.Cell>
+                                </DataTable.Row>
+                            </DataTable>
+
+                        </View>
+                        <View style={{
+                            flexDirection: "row",
+                            marginLeft: 5,
+                            marginTop: 30,
+                            justifyContent: "space-between"
+                        }}>
+                            <Text style={{color: constants.whiteColor, fontSize: 12}}>
+                                Copyright Buybidre.com 2020
+                            </Text>
+                            <TouchableOpacity onPress={()=>{
+                                alert("will go to term and conditions")
+                            }}>
+                                <Text style={{color: constants.whiteColor, fontSize: 12}}>
+                                Terms and Condition | privacy & policy
+                            </Text>
+                            </TouchableOpacity>
+
+                        </View>
+
+                        {/*</View>*/}
+
+                    </View>
+                </ScrollView>
+            </SafeAreaView>
         )
     }
 }

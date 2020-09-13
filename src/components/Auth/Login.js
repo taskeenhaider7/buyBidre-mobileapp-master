@@ -69,8 +69,8 @@ class Login extends React.Component {
         await new WEBAPI().login(obj).then((response) => {
             if (response.message === "Login Successfully.") {
                 this.setState({...this.state, loggedIn: true, spinnerShow: false});
-                AsyncStorage.setItem('UserInfo', response.uid.toString());
-                AsyncStorage.setItem('userType', response.type.toString());
+                // AsyncStorage.setItem('UserInfo', response.uid.toString());
+                // AsyncStorage.setItem('userType', response.type.toString());
                 const pushAction = StackActions.replace('Drawer', {loginTypeSeller: response.type});
                 this.props.navigation.dispatch(pushAction);
             } else {

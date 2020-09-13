@@ -99,6 +99,7 @@ class Home extends React.Component {
     componentDidMount() {
         this.fetchProducts()
         this.getCategoryList()
+
     }
 
     getCategoryList = async () => {
@@ -119,11 +120,11 @@ class Home extends React.Component {
     renderHeader = () => {
         return (
             <View style={styles.headerStyle}>
-                <Header
-                    leftComponent={{ icon: 'menu', color: '#fff' }}
-                    centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-                    rightComponent={{ icon: 'home', color: '#fff' }}
-                />
+                {/*<Header*/}
+                {/*    leftComponent={{ icon: 'menu', color: '#fff' }}*/}
+                {/*    centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}*/}
+                {/*    rightComponent={{ icon: 'home', color: '#fff' }}*/}
+                {/*/>*/}
             </View>
         );
     }
@@ -157,12 +158,13 @@ class Home extends React.Component {
                             style={styles.thumbnailStyle}/>
                     </View>
                     <View>
-                        <Text style={{fontSize: 15, fontWeight: 'bold', color: constants.whiteColor}}>Donald Trump</Text>
+                        <Text style={{fontSize: 15, fontWeight: 'bold', color: constants.whiteColor}}>Donald
+                            Trump</Text>
 
                         <Text style={{fontSize: 10, color: constants.whiteColor}}>United States</Text>
 
                         <View style={{flexDirection: 'row', marginTop: 5}}>
-                            <Text style={{ fontSize: 10, color: constants.whiteColor, fontWeight: 'bold'}}>52M$</Text>
+                            <Text style={{fontSize: 10, color: constants.whiteColor, fontWeight: 'bold'}}>52M$</Text>
                             <Text style={{
                                 fontSize: 10,
                                 textDecorationLine: 'line-through',
@@ -272,45 +274,50 @@ class Home extends React.Component {
         let image = JSON.parse(item.item.featured_image).url
         let address = JSON.parse(item.item.address).city
         return (
-            <Card style={{margin: 10}} key={Math.random().toString()}>
+            <TouchableOpacity
+                              onPress={() => this.props.navigation.navigate('Detail', {item})}
+            >
 
-                <View style={{padding: 10}}>
-                    <View style={{flexDirection: 'row', flex: 1}}>
-                        <View style={{flex: 1.5}}>
-                            <Avatar.Image size={50} source={{uri: item.item.ownerImg}}
-                                          style={{backgroundColor: '#74C5D5'}}/>
-                        </View>
-                        <View style={{flex: 6.5, padding: 5}}>
-                            <Text style={{fontSize: 14, fontWeight: 'bold', color: constants.whiteColor}}>
-                                {name}
-                            </Text>
-                            <Text style={{fontSize: 13, color: 'black'}}>
-                                {address}
-                            </Text>
-                        </View>
-                        <View style={{flex: 2, padding: 5}}>
-                            <Text style={{fontSize: 12, color: 'black', fontWeight: 'bold'}}>
-                                Price: {price}
-                            </Text>
+                <Card style={{margin: 10}} key={Math.random().toString()}>
+
+                    <View style={{padding: 10}}>
+                        <View style={{flexDirection: 'row', flex: 1}}>
+                            <View style={{flex: 1.5}}>
+                                <Avatar.Image size={50} source={{uri: item.item.ownerImg}}
+                                              style={{backgroundColor: '#74C5D5'}}/>
+                            </View>
+                            <View style={{flex: 6.5, padding: 5}}>
+                                <Text style={{fontSize: 14, fontWeight: 'bold', color: constants.whiteColor}}>
+                                    {name}
+                                </Text>
+                                <Text style={{fontSize: 13, color: 'black'}}>
+                                    {address}
+                                </Text>
+                            </View>
+                            <View style={{flex: 2, padding: 5}}>
+                                <Text style={{fontSize: 12, color: 'black', fontWeight: 'bold'}}>
+                                    Price: {price}
+                                </Text>
+                            </View>
                         </View>
                     </View>
-                </View>
-                <Card.Cover source={{uri: image}}/>
-                {this.props.route.params.loginTypeSeller.toLowerCase() !== 'seller'
-                &&
-                <Card.Actions>
-                    <Button
-                        title="Bid This"
-                        buttonStyle={{backgroundColor: 'black'}}
-                        onPress={
-                            () => {
-                                alert('You have bid sucessfully')
+                    <Card.Cover source={{uri: image}}/>
+                    {this.props.route.params.loginTypeSeller.toLowerCase() !== 'seller'
+                    &&
+                    <Card.Actions>
+                        <Button
+                            title="Bid This"
+                            buttonStyle={{backgroundColor: 'black'}}
+                            onPress={
+                                () => {
+                                    alert('You have bid sucessfully')
+                                }
                             }
-                        }
-                    />
-                </Card.Actions>
-                }
-            </Card>
+                        />
+                    </Card.Actions>
+                    }
+                </Card>
+            </TouchableOpacity>
         )
     }
     handleUploadPhoto = async (data) => {
@@ -337,7 +344,7 @@ class Home extends React.Component {
             },
         ]
         await new WEBAPI().postData(dataImage).then(response => {
-            console.log('The post datat', response)
+            console.log('The post data', response)
             alert(response.message)
         })
     };
@@ -410,6 +417,8 @@ class Home extends React.Component {
                             searchData: this.state.shopList.filter(item => item.category.toString().includes(item.value.toString()))
                         })}
                     />
+
+
                 </View>
 
             </View>
@@ -429,7 +438,7 @@ class Home extends React.Component {
                     &&
                     <FlatList
                         data={this.state.shopList}
-                        renderItem= {this.renderBuyer}
+                        renderItem={this.renderBuyer}
                         ListEmptyComponent={
                             <Text style={{textAlign: 'center', color: constants.whiteColor}}>Click Camera
                                 Icon to Add Posts</Text>
@@ -512,7 +521,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: constants.mainColor,
         paddingTop: verticalScale(10),
-        textAlign:'right'
+        textAlign: 'right'
     },
     backgroundImageStyle: {
         flex: 1,
