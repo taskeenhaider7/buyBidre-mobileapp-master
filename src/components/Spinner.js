@@ -11,7 +11,7 @@ return(
 };
 const styles={
     spinnerStyle:{
-        height:50,
+        height:100,
         alignItems:'center',
         justifyContent:'center',
         flex:1

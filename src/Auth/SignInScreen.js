@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     View,
     Text,
@@ -23,6 +23,12 @@ const SignInScreen = ({navigation}) => {
     const [showSpinner, setShowSpinner] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    useEffect(()=>{
+        setShowSpinner(false);
+        setEmail('');
+        setPassword('');
+    },[])
     //LogIn
     const handleLogin = async () => {
         setShowSpinner(true);
@@ -33,9 +39,9 @@ const SignInScreen = ({navigation}) => {
         let obj = {email, password};
         await new WEBAPI().login(obj).then((response) => {
             if (response.message === 'Login Successfully.') {
+                setShowSpinner(false);
                 AsyncStorage.setItem('type', response.type);
-                const pushAction = StackActions.replace(response.type);
-                navigation.dispatch(pushAction);
+                navigation.navigate(response.type, {screen: response.type});
             } else {
                 alert(response.message);
                 setShowSpinner(false);
@@ -118,11 +124,12 @@ const SignInScreen = ({navigation}) => {
                                     }}>
                                     <View style={{alignSelf: 'center'}}>
                                         <View>
-                                            {showSpinner ?
+                                            {
+                                                showSpinner &&
                                                 <Spinner style={styles.textStyle}/>
-                                                :
-                                                <Text style={styles.textStyle}>{'LOGIN'}</Text>
                                             }
+                                            <Text style={styles.textStyle}>{'LOGIN'}</Text>
+
                                         </View>
                                     </View>
                                 </TouchableOpacity>

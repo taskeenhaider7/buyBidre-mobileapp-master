@@ -120,7 +120,7 @@ class ForgetPasswordScreen extends React.Component {
                                         }}>Already have an account</Text>
                                         <Text style={{
                                             color: constants.whiteColor,
-                                            float:"Right",
+                                            textAlign:"right",
                                             fontSize: 12,
                                             fontWeight: 'bold',
                                         }}>Go to Login Screen</Text>
