@@ -8,10 +8,10 @@ import ForgetPasswordScreen from './Auth/ForgetPasswordScreen';
 import SellerScreen from './Seller/SellerScreen';
 import BuyerScreen from './Buyer/BuyerScreen';
 import AdminScreen from './Admin/AdminScreen';
-import Detail from './Components/Detail';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {DrawerContent} from './DrawerContent';
+import Detail from './components/Detail';
 
 const SellerStack = createStackNavigator();
 const BuyerStack = createStackNavigator();

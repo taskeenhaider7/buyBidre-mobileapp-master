@@ -3,7 +3,7 @@ import React from 'react'
 import Header, {View, Text, StyleSheet, Dimensions, TouchableOpacity, FlatList, Image} from 'react-native'
 import ImagePicker from 'react-native-image-picker';
 import Icon1 from 'react-native-vector-icons/SimpleLineIcons';
-import {CardSection,} from '../Components';
+import {CardSection,} from '../components';
 import constants from '../Constants';
 import {Card, Avatar, Searchbar} from 'react-native-paper'
 import {scale, verticalScale} from '../Services/scalingComponents';

@@ -13,7 +13,7 @@ import constants from '../Constants';
 import {StackActions} from '@react-navigation/native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/Feather';
-import {Spinner, CardSection} from '../Components';
+import {Spinner, CardSection} from '../components';
 import {WEBAPI} from '../Services/Services';
 
 const WIDTH = Math.round(Dimensions.get('window').width);

@@ -11,7 +11,7 @@ import {
     ScrollView, Image,
 } from 'react-native';
 import {StackActions} from '@react-navigation/native';
-import {CardSection, Spinner} from '../Components';
+import {CardSection, Spinner} from '../components';
 
 import constants from '../Constants';
 

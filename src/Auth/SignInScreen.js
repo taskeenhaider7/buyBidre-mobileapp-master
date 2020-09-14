@@ -12,9 +12,8 @@ import {
 } from 'react-native';
 import {WEBAPI} from '../Services/Services';
 import AsyncStorage from '@react-native-community/async-storage';
-import {StackActions} from '@react-navigation/native';
 import constants from '../Constants';
-import {CardSection, Spinner} from '../Components';
+import {CardSection, Spinner} from '../components';
 
 const WIDTH = Math.round(Dimensions.get('window').width);
 
