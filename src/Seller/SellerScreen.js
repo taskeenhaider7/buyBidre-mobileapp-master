@@ -2,24 +2,16 @@
 import React from 'react'
 import Header, {View, Text, StyleSheet, Dimensions, TouchableOpacity, FlatList, Image} from 'react-native'
 import ImagePicker from 'react-native-image-picker';
-import Icon1 from 'react-native-vector-icons/SimpleLineIcons';
 import {CardSection,} from '../components';
 import constants from '../Constants';
 import {Card, Avatar, Searchbar} from 'react-native-paper'
 import {scale, verticalScale} from '../Services/scalingComponents';
 import {WEBAPI} from '../Services/Services';
 
-import {Overlay, Input, Button, Icon} from 'react-native-elements'
+import {Overlay, Input, Icon} from 'react-native-elements'
 import RNFetchBlob from 'rn-fetch-blob';
 import DropDownPicker from "react-native-dropdown-picker";
 import SellerCard from './SellerCard';
-
-
-const options = {
-    title: 'Select Options to Upload Your Post',
-    takePhotoButtonTitle: 'Open Camera',
-    chooseFromLibraryButtonTitle: 'Choose from Gallery',
-};
 
 const WIDTH = Math.round(Dimensions.get('window').width);
 
@@ -70,10 +62,10 @@ class SellerScreen extends React.Component {
     componentDidMount() {
         this.fetchProducts()
         this.getCategoryList()
-
     }
     getCategoryList = async () => {
         await new WEBAPI().getCategories().then((response) => {
+            console.log(response.records)
             this.setState({
                 categoryList: response.records
             })
@@ -86,20 +78,6 @@ class SellerScreen extends React.Component {
                 shopList: response.records
             })
         })
-    }
-    chooseImagePickerOptions = () => {
-        ImagePicker.showImagePicker(options, (response) => {
-            console.log('Response = ', response, 'state', this.state.avatarSource);
-            if (response.didCancel) {
-                console.log('User cancelled image picker', ' avatar ', this.state.avatarSource);
-            } else if (response.error) {
-                console.log('ImagePicker Error: ', response.error);
-            } else {
-                this.setState({avatarSource: response.uri}, () => {
-                    this.handleUploadPhoto(response)
-                })
-            }
-        });
     }
     renderRow = (image) => {
         return (
@@ -209,34 +187,6 @@ class SellerScreen extends React.Component {
             </Overlay>
         )
     }
-    handleUploadPhoto = async (data) => {
-        alert(data)
-        this.setState({updateAppointmentSettingsSpinner: true})
-        let dataImage = [
-            {
-                name: 'avatar',
-                filename: data.fileName ? data.fileName : '',
-                type: data.type,
-                data: RNFetchBlob.wrap(data.path)
-            },
-            {
-                name: 'info',
-                data: JSON.stringify({
-                    price: this.state.price,
-                    title: this.state.title,
-                    prop_for: 'rent',
-                    addr1: '',
-                    city: this.state.city,
-                    postal: '',
-                    country: this.state.country,
-                })
-            },
-        ]
-        await new WEBAPI().postData(dataImage).then(response => {
-            console.log('The post data', response)
-            alert(response.message)
-        })
-    };
     onChangeSearch = (search, categoty) => {
         if (search === "") {
             this.setState({showSearchData: false})
@@ -256,59 +206,6 @@ class SellerScreen extends React.Component {
                     value={this.state.search}
                     onChangeText={this.onChangeSearch}
                 />
-                <View style={{marginTop: verticalScale(0)}}>
-                    <DropDownPicker
-                        items={[{
-                            "value": "15",
-                            "label": "New category",
-
-                        }, {
-                            "value": "10",
-                            "label": "Single Family",
-
-                        }, {
-                            "value": "11",
-                            "label": "Bank Owned",
-
-                        }, {
-                            "value": "12",
-                            "label": "Land"
-                        }, {
-                            "value": "13",
-                            "label": "Townhouse  ",
-
-                        }, {
-                            "value": "14",
-                            "label": "Office",
-
-                        }, {
-                            "value": "16",
-                            "label": "New",
-
-                        }]}
-                        defaultIndex={0}
-                        placeholder={'Select Type'}
-                        itemStyle={{
-                            justifyContent: 'flex-start', borderBottomColor: "black",
-
-                        }}
-
-                        dropDownStyle={{backgroundColor: 'white', borderColor: "grey"}}
-                        containerStyle={{
-                            height: 50,
-                            width: WIDTH,
-                            marginHorizontal: 0,
-                            marginTop: 2,
-                        }}
-                        onChangeItem={item => this.setState({
-                            ...this.state,
-                            showSearchData: true,
-                            searchData: this.state.shopList.filter(item => item.category.toString().includes(item.value.toString()))
-                        })}
-                    />
-
-
-                </View>
 
             </View>
         )

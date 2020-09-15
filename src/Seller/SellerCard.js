@@ -4,7 +4,7 @@ import {PropertyCard} from '../components';
 const SellerCard = (item)=>{
     console.log(item);
     return (
-        <PropertyCard item={item} isBuyer={false} />
+        <PropertyCard key={Math.random} item={item} isBuyer={false} />
     )
 }
 

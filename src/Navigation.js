@@ -12,6 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {DrawerContent} from './DrawerContent';
 import Detail from './components/Detail';
+import AddProperty from "./Seller/AddProperty";
 
 const SellerStack = createStackNavigator();
 const BuyerStack = createStackNavigator();
@@ -37,13 +38,27 @@ const Navigation = () => {
                     title: 'Seller',
                     headerLeft: () => (
                         <Icon
-                            name="home-outline"
-                            color='white'
-                            size={25}
-                        />
+                            name="menu-open"
+                            color={'#fff'}
+                            style={{fontWeight: 'normal', marginLeft: 7}}
+                            size={30}
+                            onPress={() => {
+                                navigation.openDrawer();
+                            }}/>
                     ),
+                    headerRight: () => (
+                        <Icon
+                            name="plus"
+                            color={'#fff'}
+                            style={{fontWeight: 'normal', marginRight:7}}
+                            size={30}
+                            onPress={() => {
+                                navigation.navigate("seller", {screen:"AddProperty"});
+                            }}/>
+                    )
                 }}/>
                 <SellerStack.Screen name="Detail" component={Detail}/>
+                <SellerStack.Screen name="AddProperty" component={AddProperty}/>
             </SellerStack.Navigator>
         );
     };
@@ -94,8 +109,10 @@ const Navigation = () => {
                     title: 'Admin',
                     headerLeft: () => (
                         <Icon
-                            name="menu-outline"
-                            backgroundColor="red"
+                            name="menu-open"
+                            color={'#fff'}
+                            style={{fontWeight: 'normal', marginLeft: 7}}
+                            size={30}
                             onPress={() => {
                                 navigation.openDrawer();
                             }}/>

@@ -28,7 +28,7 @@ class Detail extends React.Component {
     componentDidMount() {
         const data = this.props.route.params.item;
         this.setState({ data:data})
-        console.log(data.title)
+    console.log(data.title);
 
     }
     completeAddress( address ){

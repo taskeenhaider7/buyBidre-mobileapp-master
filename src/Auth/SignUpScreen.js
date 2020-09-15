@@ -20,34 +20,34 @@ const WIDTH = Math.round(Dimensions.get('window').width);
 
 
 class Signup extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            stateLanguage: '',
-            userInfo: '',
-            loggedIn: '',
-            spinnerShow: false,
-            loginTypeSeller: false,
 
-            payload: {
-                fname: "",
-                lname: "",
-                email: "",
-                password: "",
-                type: "",
-                addr1: "",
-                addr2: "",
-                city: "",
-                postal: "",
-                country: "United States",
-                mobile: "",
-                state: "",
-                cty: "",
-                zipcode: "",
-            }
+    constructor(props) {
+    super(props);
+    this.state = {
+        stateLanguage: '',
+        userInfo: '',
+        loggedIn: '',
+        spinnerShow: false,
+        loginTypeSeller: false,
+
+        payload: {
+            fname: "",
+            lname: "",
+            email: "",
+            password: "",
+            type: "",
+            addr1: "",
+            addr2: "",
+            city: "",
+            postal: "",
+            country: "United States",
+            mobile: "",
+            state: "",
+            cty: "",
+            zipcode: "",
         }
     }
-
+}
     handleSignup = async () => {
 
         this.setState({...this.state, spinnerShow: true});
@@ -436,6 +436,8 @@ class Signup extends React.Component {
 
         );
     }
+
+
 }
 
 const styles = StyleSheet.create({
