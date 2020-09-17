@@ -52,7 +52,7 @@ export class WEBAPI {
 
     login(data) {
         let url = `${this.HOST_NAME}${this.LOGIN}`;
-        // console.log("url ", url);
+        console.log("url ", url);
         let request = {
             body: JSON.stringify(data),
             method: 'post',

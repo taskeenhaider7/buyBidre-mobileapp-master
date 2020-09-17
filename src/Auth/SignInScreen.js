@@ -14,14 +14,15 @@ import {WEBAPI} from '../Services/Services';
 import AsyncStorage from '@react-native-community/async-storage';
 import constants from '../Constants';
 import {CardSection, Spinner} from '../components';
+import {AuthContext} from "../components/context";
 
 const WIDTH = Math.round(Dimensions.get('window').width);
 
 const SignInScreen = ({navigation}) => {
-
     const [showSpinner, setShowSpinner] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { signIn } = React.useContext(AuthContext);
 
     useEffect(()=>{
         setShowSpinner(false);
@@ -36,11 +37,13 @@ const SignInScreen = ({navigation}) => {
             alert('Enter valid Data');
         }
         let obj = {email, password};
-        await new WEBAPI().login(obj).then((response) => {
+        await signIn(obj).then((response) => {
             if (response.message === 'Login Successfully.') {
                 setShowSpinner(false);
-                AsyncStorage.setItem('type', response.type);
-                navigation.navigate(response.type, {screen: response.type});
+                const stringResponse = JSON.stringify(response);
+                AsyncStorage.setItem('response', stringResponse);
+                //navigation.navigate(response.type, {screen: response.type});
+
             } else {
                 alert(response.message);
                 setShowSpinner(false);

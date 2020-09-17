@@ -110,7 +110,7 @@ class ForgetPasswordScreen extends React.Component {
 
                                 <View style={{marginTop: 7}}>
                                     <TouchableOpacity
-                                        onPress={() => this.props.navigate('Login')}
+                                        onPress={() => this.props.navigation.navigate('SignIn',{screen:'SignIn'})}
                                         style={{flexDirection: 'row'}}>
 
                                         <Text style={{
@@ -136,7 +136,7 @@ class ForgetPasswordScreen extends React.Component {
 
                                 <View>
                                     <TouchableOpacity style={{flexDirection: 'row'}}
-                                                      onPress={() => this.props.navigation.navigate('Signup')}>
+                                                      onPress={() => this.props.navigation.navigate('Signup',{screen:'Signup'})}>
 
                                         <Text style={{color: constants.whiteColor, marginTop: 10, marginRight: 5, fontSize: 12}}>
                                             Don't have an account

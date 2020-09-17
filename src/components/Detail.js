@@ -1,5 +1,6 @@
 import React from 'react'
-import {Card, Avatar,Paragraph, DataTable, Searchbar} from 'react-native-paper'
+import Button, {Card, Avatar,Paragraph, DataTable, Searchbar} from 'react-native-paper'
+
 
 
 const WIDTH = Math.round(Dimensions.get('window').width);
@@ -15,16 +16,104 @@ import Header, {
     SafeAreaView
 } from 'react-native'
 import constants from "../Constants";
-import {Button} from "react-native-elements";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import {Input, Overlay} from "react-native-elements";
+import {scale} from "../Services/scalingComponents";
+import ImagePicker from "react-native-image-picker";
+import RNFetchBlob from "rn-fetch-blob";
+import {WEBAPI} from "../Services/Services";
 
 class Detail extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data:null
+            data:null,
+            isVisible: false,
         }
     }
 
+    // renderModal(){
+    //     return (
+    //         <Overlay
+    //             isVisible={this.state.isVisible}>
+    //             <View style={{
+    //                 width: scale(200)
+    //             }}>
+    //                 <View style={{flexDirection: 'row-reverse'}}>
+    //                     <Icon
+    //                         style={{}}
+    //                         name='close'
+    //                         type='font-awesome'
+    //                         color='black'
+    //                         onPress={() => {
+    //                             this.setState({isVisible: false})
+    //                         }}
+    //                     />
+    //                 </View>
+    //                 <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+    //                     <Button
+    //                         title="Add Image"
+    //                         buttonStyle={{backgroundColor: 'black'}}
+    //                         onPress={
+    //                             this.chooseImagePickerOptions.bind(this)
+    //                         }
+    //                     />
+    //                     <Button
+    //                         title="Submit"
+    //                         buttonStyle={{backgroundColor: 'black'}}
+    //                         onPress={
+    //                             this.handleUploadPhoto().done()
+    //                         }
+    //                     />
+    //                 </View>
+    //
+    //             </View>
+    //             }
+    //         </Overlay>
+    //     )
+    // }
+    // chooseImagePickerOptions = () => {
+    //     ImagePicker.showImagePicker(options, (response) => {
+    //         console.log('Response = ', response, 'state', this.state.avatarSource);
+    //         if (response.didCancel) {
+    //             console.log('User cancel image picker', ' avatar ', this.state.avatarSource);
+    //         } else if (response.error) {
+    //             console.log('ImagePicker Error: ', response.error);
+    //         } else {
+    //             this.setState({avatarSource: response.uri}, () => {
+    //                 this.setState({...this.state, imageResponse: response})
+    //             })
+    //         }
+    //     });
+    // }
+    // handleUploadPhoto = async () => {
+    //     const data = this.state.imageResponse;
+    //     let dataImage =[
+    //         {
+    //             name: 'avatar',
+    //             filename: data.fileName ? data.fileName : '',
+    //             type: data.type,
+    //             data: RNFetchBlob.wrap(data.path)
+    //         },
+    //         {
+    //             name: 'info',
+    //             data: JSON.stringify({
+    //                 price: this.state.price,
+    //                 title: this.state.title,
+    //                 prop_for: 'rent',
+    //                 addr1: '',
+    //                 city: this.state.city,
+    //                 postal: '',
+    //                 country: this.state.country,
+    //             })
+    //         },
+    //     ]
+    //     await new WEBAPI().postData(dataImage).then(response => {
+    //         console.log('The post data', response)
+    //         alert(response.message);
+    //         this.props.navigation.navigate('seller', {screen: 'seller'})
+    //     })
+    // };
     componentDidMount() {
         const data = this.props.route.params.item;
         this.setState({ data:data})
@@ -49,7 +138,7 @@ class Detail extends React.Component {
 
                         <View>
                             <Text style={{
-                                textAlign: "center", fontSize: 28, margin: 15
+                                textAlign: "center", fontSize: 28, margin: 7
                             }}>
                                 {data.title}
                             </Text>
@@ -70,7 +159,13 @@ class Detail extends React.Component {
                                 </Card.Content>
                                 <Card.Actions>
                                     <Text>Property filters  </Text>
-                                    <Button >add</Button>
+                                    <Icon
+                                        name="plus"
+                                        color={'#000'}
+                                        style={{fontWeight: 'normal', marginRight:7}}
+                                        size={30}
+                                        onPress={()=>alert("property can be added soon")
+                                        }/>
                                 </Card.Actions>
                             </Card>
                         </View>

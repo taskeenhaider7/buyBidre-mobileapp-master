@@ -125,68 +125,68 @@ class SellerScreen extends React.Component {
             </Card>
         )
     }
-    renderModal = () => {
-        return (
-            <Overlay
-                isVisible={this.state.isVisible}>
-                    <View style={{
-                        width: scale(200)
-                    }}>
-                        <View style={{flexDirection: 'row-reverse'}}>
-                            <Icon
-                                style={{}}
-                                name='close'
-                                type='font-awesome'
-                                color='black'
-                                onPress={() => {
-                                    this.setState({isVisible: false})
-                                }}
-                            />
-                        </View>
-                        <Input
-                            placeholder='Add Title'
-                            value={this.state.title}
-                            onChange={(text) => {
-                                this.setState({title: text})
-                            }}
-                        />
-                        <Input
-                            placeholder='Add City'
-                            value={this.state.city}
-                            onChange={(text) => {
-                                this.setState({city: text})
-                            }}
-                        />
-                        <Input
-                            placeholder='Add Country'
-                            value={this.state.country}
-                            onChange={(text) => {
-                                this.setState({country: text})
-                            }}
-                        />
-                        <Input
-                            placeholder='Add Price'
-                            value={this.state.price}
-                            onChange={(text) => {
-                                this.setState({price: text})
-                            }}
-                        />
-
-                        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                            {/*<Button*/}
-                            {/*    title="Upload Image and Posts"*/}
-                            {/*    buttonStyle={{backgroundColor: 'black'}}*/}
-                            {/*    onPress={*/}
-                            {/*        this.chooseImagePickerOptions.bind(this)*/}
-                            {/*    }*/}
-                            {/*/>*/}
-                        </View>
-
-                    </View>
-                }
-            </Overlay>
-        )
-    }
+    // renderModal = () => {
+    //     return (
+    //         <Overlay
+    //             isVisible={this.state.isVisible}>
+    //                 <View style={{
+    //                     width: scale(200)
+    //                 }}>
+    //                     <View style={{flexDirection: 'row-reverse'}}>
+    //                         <Icon
+    //                             style={{}}
+    //                             name='close'
+    //                             type='font-awesome'
+    //                             color='black'
+    //                             onPress={() => {
+    //                                 this.setState({isVisible: false})
+    //                             }}
+    //                         />
+    //                     </View>
+    //                     <Input
+    //                         placeholder='Add Title'
+    //                         value={this.state.title}
+    //                         onChange={(text) => {
+    //                             this.setState({title: text})
+    //                         }}
+    //                     />
+    //                     <Input
+    //                         placeholder='Add City'
+    //                         value={this.state.city}
+    //                         onChange={(text) => {
+    //                             this.setState({city: text})
+    //                         }}
+    //                     />
+    //                     <Input
+    //                         placeholder='Add Country'
+    //                         value={this.state.country}
+    //                         onChange={(text) => {
+    //                             this.setState({country: text})
+    //                         }}
+    //                     />
+    //                     <Input
+    //                         placeholder='Add Price'
+    //                         value={this.state.price}
+    //                         onChange={(text) => {
+    //                             this.setState({price: text})
+    //                         }}
+    //                     />
+    //
+    //                     <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+    //                         {/*<Button*/}
+    //                         {/*    title="Upload Image and Posts"*/}
+    //                         {/*    buttonStyle={{backgroundColor: 'black'}}*/}
+    //                         {/*    onPress={*/}
+    //                         {/*        this.chooseImagePickerOptions.bind(this)*/}
+    //                         {/*    }*/}
+    //                         {/*/>*/}
+    //                     </View>
+    //
+    //                 </View>
+    //             }
+    //         </Overlay>
+    //     )
+    // }
     onChangeSearch = (search, categoty) => {
         if (search === "") {
             this.setState({showSearchData: false})
@@ -214,7 +214,7 @@ class SellerScreen extends React.Component {
     render() {
         return (
             <View style={styles.MainContainer}>
-                {this.renderModal()}
+                {/*{this.renderModal()}*/}
 
                 <View style={{flex: 1}}>
                     {this.renderSearchBar()}

@@ -53,9 +53,9 @@ class Signup extends React.Component {
         this.setState({...this.state, spinnerShow: true});
         await new WEBAPI().signup(this.state.payload).then((response) => {
             if (response.message === "Signup Successfully") {
-                const pushAction = StackActions.replace('Login');
+                this.setState({...this.state, spinnerShow: false} , alert("account created successfully"));
+                const pushAction = StackActions.replace('SignIn', {screen: 'SignIn'});
                 this.props.navigation.dispatch(pushAction);
-                this.setState({...this.state, spinnerShow: false});
             } else {
                 alert(response.message);
                 this.setState({...this.state, spinnerShow: false});
@@ -373,7 +373,7 @@ class Signup extends React.Component {
                                 <CardSection>
                                     <TouchableOpacity
                                         onPress={() => {
-                                            this.handleSignup().done()
+                                            this.handleSignup().done();
                                         }}
                                         style={{
                                             marginTop: 10,
@@ -406,7 +406,7 @@ class Signup extends React.Component {
 
                                 <View>
                                     <TouchableOpacity style={{flexDirection: 'row'}}
-                                                      onPress={() => this.props.navigation.navigate('Login')}
+                                                      onPress={() => this.props.navigation.navigate('SignIn', {screen:'SignIn'})}
                                     >
                                         <Text style={{color: constants.whiteColor, marginTop: 10, fontSize: 12}}>
                                             Already have an account
