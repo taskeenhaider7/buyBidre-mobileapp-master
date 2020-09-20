@@ -13,6 +13,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {DrawerContent} from './DrawerContent';
 import Detail from './components/Detail';
 import Contact from './components/Contact';
+import Vendors from './components/Vendors';
+import PropertyAgreement from './components/PropertyAgreement';
 import MyProperties from './components/MyProperties';
 import AddProperty from "./Seller/AddProperty";
 import AsyncStorage from "@react-native-community/async-storage";
@@ -86,7 +88,7 @@ const Navigation = () => {
         return (
             <SellerStack.Navigator screenOptions={{
                 headerStyle: {
-                    backgroundColor: 'red',
+                    backgroundColor: '#0d4257',
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
@@ -118,8 +120,10 @@ const Navigation = () => {
                 }}/>
                 <SellerStack.Screen name="Detail" component={Detail}/>
                 <SellerStack.Screen name="Contact" component={Contact}/>
+                <SellerStack.Screen name="PropertyAgreement" component={PropertyAgreement}/>
                 <SellerStack.Screen name="MyProperties" component={MyProperties}/>
                 <SellerStack.Screen name="AddProperty" component={AddProperty}/>
+                <SellerStack.Screen name="Vendors" component={Vendors}/>
             </SellerStack.Navigator>
         );
     };
@@ -129,7 +133,7 @@ const Navigation = () => {
         return (
             <BuyerStack.Navigator screenOptions={{
                 headerStyle: {
-                    backgroundColor: 'red',
+                    backgroundColor: '#0d4257',
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
@@ -151,6 +155,7 @@ const Navigation = () => {
                 }}/>
                 <BuyerStack.Screen name="Detail" component={Detail}/>
                 <SellerStack.Screen name="Contact" component={Contact}/>
+                <SellerStack.Screen name="PropertyAgreement" component={PropertyAgreement}/>
             </BuyerStack.Navigator>
         );
     };
@@ -160,7 +165,7 @@ const Navigation = () => {
         return (
             <AdminStack.Navigator screenOptions={{
                 headerStyle: {
-                    backgroundColor: 'red',
+                    backgroundColor: '#0d4257',
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
@@ -190,7 +195,7 @@ const Navigation = () => {
             <AuthStack.Navigator screenOptions={{
                 drawerLockMode: 'locked-closed',
                 headerStyle: {
-                    backgroundColor: 'red',
+                    backgroundColor: '#0d4257',
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {

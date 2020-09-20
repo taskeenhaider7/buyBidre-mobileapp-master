@@ -13,7 +13,7 @@ import Header, {
     FlatList,
     Image,
     ScrollView,
-    SafeAreaView
+    SafeAreaView, Linking
 } from 'react-native'
 import constants from "../Constants";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -22,6 +22,7 @@ import {scale} from "../Services/scalingComponents";
 import ImagePicker from "react-native-image-picker";
 import RNFetchBlob from "rn-fetch-blob";
 import {WEBAPI} from "../Services/Services";
+import PropertyAgreement from "./PropertyAgreement";
 
 class Detail extends React.Component {
     constructor(props) {
@@ -227,7 +228,9 @@ class Detail extends React.Component {
                                     <DataTable.Cell>
                                         view user</DataTable.Cell>
                                     <DataTable.Cell >{data.prop_for}</DataTable.Cell>
-                                    <DataTable.Cell >fill form</DataTable.Cell>
+                                    <DataTable.Cell onPress={()=>{
+                                        this.props.navigation.navigate('PropertyAgreement', {screen:'PropertyAgreement'})
+                                    }}>fill form</DataTable.Cell>
                                 </DataTable.Row>
                             </DataTable>
 
@@ -242,7 +245,7 @@ class Detail extends React.Component {
                                 Copyright Buybidre.com 2020
                             </Text>
                             <TouchableOpacity onPress={()=>{
-                                alert("will go to term and conditions")
+                                Linking.openURL('https://documentcloud.adobe.com/link/track?uri=urn%3Aaaid%3Ascds%3AUS%3A146cb0f1-c326-47fd-b320-b41922a8d7f3#pageNum=1');
                             }}>
                                 <Text style={{color: constants.whiteColor, fontSize: 12}}>
                                     Terms and Condition | privacy & policy

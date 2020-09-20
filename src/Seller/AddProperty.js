@@ -109,7 +109,7 @@ class AddProperty extends React.Component {
 
     render() {
         return (
-            <SafeAreaView style={styles.MainContainer}>
+            // <SafeAreaView style={styles.MainContainer}>
                 <ScrollView style={styles.scrollView}>
                     <View style={{marginBottom: 10}}>
                         <TextInput
@@ -688,7 +688,7 @@ class AddProperty extends React.Component {
 
                     </View>
                 </ScrollView>
-        </SafeAreaView>
+        // </SafeAreaView>
         )
 
     }
@@ -702,6 +702,7 @@ const styles = StyleSheet.create({
     scrollView: {
         backgroundColor: "white",
         marginHorizontal: 10,
+        flex:1
     },
     preference: {
         flexDirection: 'row',

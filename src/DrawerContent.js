@@ -105,9 +105,9 @@ export function DrawerContent(props) {
                                             />
                                         )}
                                         label="Venders"
-                                        /*onPress={() => {
-                                            props.navigation.navigate('seller', {screen: 'seller'})
-                                        }}*/
+                                        onPress={() => {
+                                            props.navigation.navigate('Vendors', {screen: 'Vendors'})
+                                        }}
                                     />
                                     <DrawerItem
                                         icon={({color, size}) => (

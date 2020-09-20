@@ -13,7 +13,7 @@ import Header, {
     FlatList,
     Image,
     ScrollView,
-    SafeAreaView, TextInput
+    SafeAreaView, TextInput, Linking
 } from 'react-native'
 import constants from "../Constants";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -247,7 +247,7 @@ class Contact extends React.Component {
                                 Copyright Buybidre.com
                             </Text>
                             <TouchableOpacity onPress={()=>{
-                                alert("we have to add term and conditions")
+                                Linking.openURL('https://documentcloud.adobe.com/link/track?uri=urn%3Aaaid%3Ascds%3AUS%3A146cb0f1-c326-47fd-b320-b41922a8d7f3#pageNum=1');
                             }}>
                                 <Text style={{color:"blue", fontSize: 14}}>
                                     Terms and Condition | privacy & policy
