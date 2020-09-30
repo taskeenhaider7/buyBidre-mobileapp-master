@@ -1,36 +1,27 @@
-import React from 'react'
-import Button, {Card, Avatar,Paragraph, DataTable, Searchbar} from 'react-native-paper'
-
-
+import React from 'react';
+import {Card, Paragraph, DataTable} from 'react-native-paper';
 
 const WIDTH = Math.round(Dimensions.get('window').width);
-import Header, {
+import {
     View,
     Text,
     StyleSheet,
     Dimensions,
     TouchableOpacity,
-    FlatList,
-    Image,
     ScrollView,
-    SafeAreaView, Linking
-} from 'react-native'
-import constants from "../Constants";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import {Input, Overlay} from "react-native-elements";
-import {scale} from "../Services/scalingComponents";
-import ImagePicker from "react-native-image-picker";
-import RNFetchBlob from "rn-fetch-blob";
-import {WEBAPI} from "../Services/Services";
-import PropertyAgreement from "./PropertyAgreement";
+    SafeAreaView, Linking,
+} from 'react-native';
+import constants from '../Constants';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import PropertyAgreement from './PropertyAgreement';
 
 class Detail extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            data:null,
+            data: null,
             isVisible: false,
-        }
+        };
     }
 
     // renderModal(){
@@ -117,19 +108,20 @@ class Detail extends React.Component {
     // };
     componentDidMount() {
         const data = this.props.route.params.item;
-        this.setState({ data:data})
-    console.log(data.title);
+        this.setState({data: data});
+        console.log(data.title);
 
     }
-    completeAddress( address ){
-        return ( address.addr1 +" "+ address.addr2+" "+address.city+" "+address.state+" "+address.country+" "+address.postal );
+
+    completeAddress(address) {
+        return (address.addr1 + ' ' + address.addr2 + ' ' + address.city + ' ' + address.state + ' ' + address.country + ' ' + address.postal);
     }
 
     render() {
         const data = this.props.route.params.item;
 
-        let image = JSON.parse(data.featured_image).url
-        let Address = JSON.parse(data.address)
+        let image = JSON.parse(data.featured_image).url;
+        let Address = JSON.parse(data.address);
 
         // console.log(this.state.data)
         return (
@@ -139,33 +131,33 @@ class Detail extends React.Component {
 
                         <View>
                             <Text style={{
-                                textAlign: "center", fontSize: 28, margin: 7
+                                textAlign: 'center', fontSize: 28, margin: 7,
                             }}>
                                 {data.title}
                             </Text>
                         </View>
                         <View>
                             <Card>
-                                <Card.Cover source={{ uri: image }}
+                                <Card.Cover source={{uri: image}}
                                             style={{
                                                 height: 300,
                                                 flex: 0,
                                                 width: WIDTH,
                                                 marginLeft: 2,
                                                 marginRight: 2,
-                                                borderRadius: 5
+                                                borderRadius: 5,
                                             }}/>
                                 <Card.Content>
                                     <Paragraph>Three levels 4 bedroom & 21 street</Paragraph>
                                 </Card.Content>
                                 <Card.Actions>
-                                    <Text>Property filters  </Text>
+                                    <Text>Property filters </Text>
                                     <Icon
                                         name="plus"
                                         color={'#000'}
-                                        style={{fontWeight: 'normal', marginRight:7}}
+                                        style={{fontWeight: 'normal', marginRight: 7}}
                                         size={30}
-                                        onPress={()=>alert("property can be added soon")
+                                        onPress={() => alert('property can be added soon')
                                         }/>
                                 </Card.Actions>
                             </Card>
@@ -182,7 +174,7 @@ class Detail extends React.Component {
                                     <DataTable.Cell
                                         onPress={
                                             () => {
-                                                alert("ashraf town pindorian islamabad")
+                                                alert('ashraf town pindorian islamabad');
                                             }
                                         }
                                     >{this.completeAddress(Address)}</DataTable.Cell>
@@ -197,7 +189,7 @@ class Detail extends React.Component {
                             <DataTable>
                                 <DataTable.Header>
                                     <DataTable.Title>Bedrooms</DataTable.Title>
-                                    <DataTable.Title >Bathrooms</DataTable.Title>
+                                    <DataTable.Title>Bathrooms</DataTable.Title>
                                     <DataTable.Title numeric>Half Bathrooms</DataTable.Title>
                                     <DataTable.Title numeric>Area</DataTable.Title>
                                     <DataTable.Title numeric>Floor</DataTable.Title>
@@ -207,8 +199,8 @@ class Detail extends React.Component {
                                 <DataTable.Row>
 
                                     <DataTable.Cell>1</DataTable.Cell>
-                                    <DataTable.Cell >2</DataTable.Cell>
-                                    <DataTable.Cell >3</DataTable.Cell>
+                                    <DataTable.Cell>2</DataTable.Cell>
+                                    <DataTable.Cell>3</DataTable.Cell>
                                     <DataTable.Cell numeric>4000</DataTable.Cell>
                                     <DataTable.Cell numeric>4</DataTable.Cell>
 
@@ -220,31 +212,31 @@ class Detail extends React.Component {
                             <DataTable>
                                 <DataTable.Header>
                                     <DataTable.Title>User</DataTable.Title>
-                                    <DataTable.Title >Type</DataTable.Title>
-                                    <DataTable.Title >Fill Form</DataTable.Title>
+                                    <DataTable.Title>Type</DataTable.Title>
+                                    <DataTable.Title>Fill Form</DataTable.Title>
                                 </DataTable.Header>
 
                                 <DataTable.Row>
                                     <DataTable.Cell>
                                         view user</DataTable.Cell>
-                                    <DataTable.Cell >{data.prop_for}</DataTable.Cell>
-                                    <DataTable.Cell onPress={()=>{
-                                        this.props.navigation.navigate('PropertyAgreement', {screen:'PropertyAgreement'})
+                                    <DataTable.Cell>{data.prop_for}</DataTable.Cell>
+                                    <DataTable.Cell onPress={() => {
+                                        this.props.navigation.navigate('PropertyAgreement', {screen: 'PropertyAgreement'});
                                     }}>fill form</DataTable.Cell>
                                 </DataTable.Row>
                             </DataTable>
 
                         </View>
                         <View style={{
-                            flexDirection: "row",
+                            flexDirection: 'row',
                             marginLeft: 5,
                             marginTop: 30,
-                            justifyContent: "space-between"
+                            justifyContent: 'space-between',
                         }}>
                             <Text style={{color: constants.whiteColor, fontSize: 12}}>
                                 Copyright Buybidre.com 2020
                             </Text>
-                            <TouchableOpacity onPress={()=>{
+                            <TouchableOpacity onPress={() => {
                                 Linking.openURL('https://documentcloud.adobe.com/link/track?uri=urn%3Aaaid%3Ascds%3AUS%3A146cb0f1-c326-47fd-b320-b41922a8d7f3#pageNum=1');
                             }}>
                                 <Text style={{color: constants.whiteColor, fontSize: 12}}>
@@ -259,14 +251,14 @@ class Detail extends React.Component {
                     </View>
                 </ScrollView>
             </SafeAreaView>
-        )
+        );
     }
 }
 
 const styles = StyleSheet.create({
     MainContainer: {
-        backgroundColor: "white",
+        backgroundColor: 'white',
         flex: 1,
-    }
-})
-export default Detail
+    },
+});
+export default Detail;

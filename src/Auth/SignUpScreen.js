@@ -201,11 +201,12 @@ class Signup extends React.Component {
                                             ]}
                                             defaultIndex={0}
                                             placeholder={'Select Type'}
-                                            itemStyle={{
-                                                justifyContent: 'flex-start', borderBottomColor: "black"
+                                            style={{borderColor: 'green', backgroundColor:'rgba(0,0,0,0.02)'}}
+                                            placeholderStyle={{
+                                                color: 'rgba(0.1,0.1,0.3,0.4)'
                                             }}
-                                            style={{borderColor: "black"}}
-                                            dropDownStyle={{backgroundColor: 'white', borderColor: "black"}}
+                                            itemStyle={{justifyContent: 'flex-start'}}
+                                            dropDownStyle={{backgroundColor: '#fafafa'}}
                                             containerStyle={{
                                                 height: 40,
                                                 width: WIDTH - 55,
@@ -277,11 +278,12 @@ class Signup extends React.Component {
                                                 ]}
                                                 defaultIndex={0}
                                                 placeholder={'Select State'}
-                                                itemStyle={{
-                                                    justifyContent: 'flex-start', borderBottomColor: "black"
+                                                style={{borderColor: 'green', backgroundColor:'rgba(0,0,0,0.02)'}}
+                                                placeholderStyle={{
+                                                    color: 'rgba(0.1,0.1,0.3,0.4)'
                                                 }}
-                                                style={{borderColor: "black"}}
-                                                dropDownStyle={{backgroundColor: 'white', borderColor: "green"}}
+                                                itemStyle={{justifyContent: 'flex-start'}}
+                                                dropDownStyle={{backgroundColor: '#fafafa'}}
                                                 containerStyle={{
                                                     height: 40,
                                                     flex:1,

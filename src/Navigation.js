@@ -156,6 +156,9 @@ const Navigation = () => {
                 <BuyerStack.Screen name="Detail" component={Detail}/>
                 <SellerStack.Screen name="Contact" component={Contact}/>
                 <SellerStack.Screen name="PropertyAgreement" component={PropertyAgreement}/>
+                <SellerStack.Screen name="MyProperties" component={MyProperties}/>
+                <SellerStack.Screen name="AddProperty" component={AddProperty}/>
+                <SellerStack.Screen name="Vendors" component={Vendors}/>
             </BuyerStack.Navigator>
         );
     };
