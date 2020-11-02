@@ -14,6 +14,7 @@ import {WEBAPI} from '../Services/Services';
 import {Switch, Text, TouchableRipple} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
 import {CardSection} from '../components';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const options = {
     title: 'Select Options to Upload Your Post',
@@ -26,10 +27,10 @@ class AddProperty extends React.Component {
         super(props);
         this.state = {
             payload: {
-                propertyTitle: '',
+                title: '',
                 propertyDescription: '',
-                category: '',
-                propertyFor: 'sale',
+                c_id: '',
+                prop_for: 'sale',
                 propertyTax: '',
                 bedroom: '',
                 halfBathroom: '',
@@ -41,11 +42,12 @@ class AddProperty extends React.Component {
                 agentCommission: '',
                 offerAmount: '',
                 bidAmount: '',
-                address1: '',
+                addr1: '',
                 address2: '',
                 state: '',
-                cty: '',
-                zipcode: '',
+                status: 'pending',
+                city: '',
+                postal: '',
                 country: '',
 
             },
@@ -66,32 +68,57 @@ class AddProperty extends React.Component {
             }
         });
     };
-    handleUploadPhoto = async () => {
-        const data = this.state.imageResponse;
-        let dataImage = [
-            {
-                name: 'avatar',
-                filename: data.fileName ? data.fileName : '',
-                type: data.type,
-                data: RNFetchBlob.wrap(data.path),
-            },
-            {
-                name: 'info',
-                data: JSON.stringify({
-                    price: this.state.price,
-                    title: this.state.title,
-                    prop_for: 'rent',
-                    addr1: '',
-                    city: this.state.city,
-                    postal: '',
-                    country: this.state.country,
-                }),
-            },
-        ];
-        await new WEBAPI().postData(dataImage).then(response => {
-            console.log('The post data', response);
+    AddProperty = async () => {
+        const property = {
+            c_id: this.state.payload.c_id,
+            title: this.state.payload.title,
+            descp: this.state.payload.propertyDescription,
+            prop_for: this.state.payload.prop_for,
+            tax_id: this.state.payload.propertyTax,
+            status: this.state.payload.status,
+            userId: this.state.payload.user_id,
+            featured_image: 'featured image',
+            details: JSON.stringify({
+                'beds': this.state.payload.bedroom,
+                'bathrooms': this.state.payload.bathroom,
+                'half_bathrooms': this.state.payload.halfBathroom,
+                'area': this.state.payload.sq_area,
+                'floors': this.state.payload.floor,
+                'type': this.state.payload.prop_for,
+            }),
+            address: JSON.stringify({
+                'addr1': this.state.payload.addr1,
+                'city': this.state.payload.city,
+                'postal': this.state.payload.postal,
+                'country': this.state.payload.country,
+            }),
+            price: JSON.stringify({
+                'price': this.state.payload.price,
+                'agent_comission': this.state.payload.agentCommission,
+                'total_price': '',
+            }),
+        };
+
+        await new WEBAPI().addProperty(property).then(response => {
+            if (response.code === 200) {
+                this.props.navigation.navigate('seller', {screen: 'seller'});
+                //this.uploadPropertyImage(response.id)
+            }
             alert(response.message);
-            this.props.navigation.navigate('seller', {screen: 'seller'});
+        });
+    };
+
+    uploadPropertyImage = async (id) => {
+        const data = this.state.imageResponse;
+        let imageData = {
+            "name": 'avatar',
+            "filename" : (data && data.fileName) ? data.fileName : '',
+            "type" : data ? data.type : '',
+            "data" :  RNFetchBlob.wrap(data.data)
+        };
+
+        await new WEBAPI().uploadFile(imageData, id).then(response => {
+            response.code !== 400 && this.props.navigation.navigate('seller', {screen: 'seller'});
         });
     };
 
@@ -103,6 +130,19 @@ class AddProperty extends React.Component {
         });
     }
 
+    async componentDidMount(): void {
+        await AsyncStorage.getItem('response').then(value => {
+            if (value !== null) {
+                const responseObj = JSON.parse(value);
+                console.log('user response object ', responseObj);
+                this.setState({
+                    ...this.state,
+                    payload: {...this.state.payload, user_id: responseObj.ID},
+                });
+            }
+        });
+    }
+
     render() {
         return (
             /*<SafeAreaView style={styles.MainContainer}>*/
@@ -110,10 +150,10 @@ class AddProperty extends React.Component {
                 <View style={{marginBottom: 10}}>
                     <TextInput
                         label="Property Title"
-                        value={this.state.payload.propertyTitle}
-                        onChangeText={propertyTitle => this.setState({
+                        value={this.state.payload.title}
+                        onChangeText={title => this.setState({
                             ...this.state,
-                            payload: {...this.state.payload, propertyTitle},
+                            payload: {...this.state.payload, title},
                         })}
                         placeholder='Property Title'
                         underlineColorAndroid='transparent'
@@ -134,7 +174,7 @@ class AddProperty extends React.Component {
                     <DropDownPicker
                         items={[{
                             'value': '15',
-                            'label': 'New category',
+                            'label': 'New Category',
 
                         }, {
                             'value': '10',
@@ -162,11 +202,14 @@ class AddProperty extends React.Component {
                         }]}
                         defaultIndex={0}
                         placeholder={'Property Category'}
-                        style={{borderColor: 'green', backgroundColor:'rgba(0,0,0,0.02)'}}
+                        style={{borderColor: 'green', backgroundColor: 'rgba(0,0,0,0.02)'}}
                         placeholderStyle={{
-                            color: 'rgba(0.1,0.1,0.3,0.4)'
+                            color: 'rgba(0.1,0.1,0.3,0.4)',
                         }}
                         itemStyle={{justifyContent: 'flex-start'}}
+                        labelStyle={{
+                            color: '#000',
+                        }}
                         dropDownStyle={{backgroundColor: '#fafafa'}}
                         containerStyle={{
                             height: 50,
@@ -175,7 +218,7 @@ class AddProperty extends React.Component {
                         }}
                         onChangeItem={item => this.setState({
                             ...this.state,
-                            payload: {...this.state.payload, category: item.value},
+                            payload: {...this.state.payload, c_id: item.value},
                         })}
                     />
                     <DropDownPicker
@@ -194,9 +237,12 @@ class AddProperty extends React.Component {
                         }]}
                         defaultIndex={0}
                         placeholder={'Property For'}
-                        style={{borderColor: 'green', backgroundColor:'rgba(0,0,0,0.02)'}}
+                        style={{borderColor: 'green', backgroundColor: 'rgba(0,0,0,0.02)'}}
                         placeholderStyle={{
-                            color: 'rgba(0.1,0.1,0.3,0.4)'
+                            color: 'rgba(0.1,0.1,0.3,0.4)',
+                        }}
+                        labelStyle={{
+                            color: '#000',
                         }}
                         itemStyle={{justifyContent: 'flex-start'}}
                         dropDownStyle={{backgroundColor: '#fafafa'}}
@@ -207,7 +253,7 @@ class AddProperty extends React.Component {
                         }}
                         onChangeItem={item => this.setState({
                             ...this.state,
-                            payload: {...this.state.payload, propertyFor: item.value},
+                            payload: {...this.state.payload, prop_for: item.value},
                         })}
                     />
                     <TextInput
@@ -284,13 +330,13 @@ class AddProperty extends React.Component {
                         style={styles.inputStyle}
                     />
                     <TextInput
-                        label="Price"
+                        label="price"
                         value={this.state.payload.price}
                         onChangeText={price => this.setState({
                             ...this.state,
                             payload: {...this.state.payload, price},
                         })}
-                        placeholder='Price'
+                        placeholder='price'
                         underlineColorAndroid='transparent'
                         style={styles.inputStyle}
                     />
@@ -337,10 +383,10 @@ class AddProperty extends React.Component {
                     />
                     <TextInput
                         label="Address 1"
-                        value={this.state.payload.address1}
-                        onChangeText={address1 => this.setState({
+                        value={this.state.payload.addr1}
+                        onChangeText={addr1 => this.setState({
                             ...this.state,
-                            payload: {...this.state.payload, address1},
+                            payload: {...this.state.payload, addr1},
                         })}
                         placeholder='Address 1'
                         underlineColorAndroid='transparent'
@@ -373,9 +419,12 @@ class AddProperty extends React.Component {
                             ]}
                             defaultIndex={0}
                             placeholder={'Select State'}
-                            style={{borderColor: 'green', backgroundColor:'rgba(0,0,0,0.02)'}}
+                            style={{borderColor: 'green', backgroundColor: 'rgba(0,0,0,0.02)'}}
                             placeholderStyle={{
-                                color: 'rgba(0.1,0.1,0.3,0.4)'
+                                color: 'rgba(0.1,0.1,0.3,0.4)',
+                            }}
+                            labelStyle={{
+                                color: '#000',
                             }}
                             itemStyle={{justifyContent: 'flex-start'}}
                             dropDownStyle={{backgroundColor: '#fafafa'}}
@@ -409,10 +458,10 @@ class AddProperty extends React.Component {
                     <View style={{flexDirection: 'row'}}>
                         <TextInput
                             label="Zip Code"
-                            value={this.state.payload.zipcode}
-                            onChangeText={zipcode => this.setState({
+                            value={this.state.payload.postal}
+                            onChangeText={postal => this.setState({
                                 ...this.state,
-                                payload: {...this.state.payload, zipcode},
+                                payload: {...this.state.payload, postal},
                             })}
                             placeholder='Zip Code'
                             // placeholderTextColor={constants.whiteColor}
@@ -423,8 +472,11 @@ class AddProperty extends React.Component {
 
                             label="United States"
                             value={this.state.payload.country}
-                            placeholder='Country'
-                            // placeholderTextColor={constants.whiteColor}
+                            placeholder='country'
+                            onChangeText={country => this.setState({
+                                ...this.state,
+                                payload: {...this.state.payload, country},
+                            })}
                             underlineColorAndroid='transparent'
                             style={styles.rightRowInputStyle}
                         />
@@ -458,7 +510,7 @@ class AddProperty extends React.Component {
                     <CardSection>
                         <TouchableOpacity
                             onPress={() => {
-                                this.handleUploadPhoto().then();
+                                this.AddProperty().then();
                             }}
                             style={{
                                 marginTop: 10,

@@ -22,62 +22,69 @@ const WIDTH = Math.round(Dimensions.get('window').width);
 class Signup extends React.Component {
 
     constructor(props) {
-    super(props);
-    this.state = {
-        stateLanguage: '',
-        userInfo: '',
-        loggedIn: '',
-        spinnerShow: false,
-        loginTypeSeller: false,
+        super(props);
+        this.state = {
+            stateLanguage: '',
+            userInfo: '',
+            loggedIn: '',
+            spinnerShow: false,
+            loginTypeSeller: false,
 
-        payload: {
-            fname: "",
-            lname: "",
-            email: "",
-            password: "",
-            type: "",
-            addr1: "",
-            addr2: "",
-            city: "",
-            postal: "",
-            country: "United States",
-            mobile: "",
-            state: "",
-            cty: "",
-            zipcode: "",
-        }
+            payload: {
+                email: 'test5@test.com',
+                password: 'asdfdfadf',
+                type: 'seller',
+                mobile: '345634756',
+                name: {'fname': 'asdfsdf', 'lname': 'asdf'},
+                address: {
+                    'addr1': 'zsdfdf',
+                    'addr2': 'sdfsdf',
+                    'city': 'asdf',
+                    'state': 'UK',
+                    'postal': '4400',
+                    'country': 'United States',
+                },
+            },
+        };
     }
-}
-    handleSignup = async () => {
 
+    handleSignup = async () => {
         this.setState({...this.state, spinnerShow: true});
-        await new WEBAPI().signup(this.state.payload).then((response) => {
-            if (response.message === "Signup Successfully") {
-                this.setState({...this.state, spinnerShow: false} , alert("account created successfully"));
+
+        const request = this.state.payload;
+        request.name = JSON.stringify(request.name);
+        request.address = JSON.stringify(request.address);
+
+        await new WEBAPI().signup(request).then((response) => {
+            if (response.message === 'Signup Successfully') {
+                this.setState({...this.state, spinnerShow: false}, alert('account created successfully'));
                 const pushAction = StackActions.replace('SignIn', {screen: 'SignIn'});
                 this.props.navigation.dispatch(pushAction);
             } else {
                 alert(response.message);
                 this.setState({...this.state, spinnerShow: false});
             }
-        })
-    }
+        });
+    };
 
     render() {
         return (
-            <SafeAreaView style={styles.MainContainer}>
+            // <SafeAreaView style={styles.MainContainer}>
                 <ScrollView style={styles.scrollView}>
                     <View style={styles.MainContainer}>
                         <View style={styles.backgroundImageStyle}>
                             <View style={{flex: 1, alignItems: 'center'}}>
                                 <View style={{marginTop: 0}}>
-                                    <View style={{flexDirection: 'row', marginLeft: 10,}}>
+                                    <View style={{flexDirection: 'row', marginLeft: 10}}>
                                         <TextInput
                                             label="First Name"
-                                            value={this.state.payload.fname}
+                                            value={this.state.payload.name.fname}
                                             onChangeText={fname => this.setState({
                                                 ...this.state,
-                                                payload: {...this.state.payload, fname}
+                                                payload: {
+                                                    ...this.state.payload,
+                                                    name: {...this.state.payload.name, fname},
+                                                },
                                             })}
                                             placeholder='First Name'
                                             placeholderTextColor={constants.whiteColor}
@@ -85,24 +92,26 @@ class Signup extends React.Component {
                                             style={{
                                                 marginTop: 30,
                                                 paddingLeft: 10,
-                                                flex:0.9,
-                                                height: 40,
+                                                flex: 0.9,
                                                 fontSize: 15,
                                                 backgroundColor: 'rgba(0,0,0,0.02)',
                                                 borderColor: constants.greenColor,
                                                 borderRadius: 7,
                                                 borderWidth: 1,
                                                 marginHorizontal: 15,
-                                                color: constants.whiteColor
+                                                color: constants.whiteColor,
                                             }}
                                         />
                                         <TextInput
 
                                             label="Last Name"
-                                            value={this.state.payload.lname}
+                                            value={this.state.payload.name.lname}
                                             onChangeText={lname => this.setState({
                                                 ...this.state,
-                                                payload: {...this.state.payload, lname}
+                                                payload: {
+                                                    ...this.state.payload,
+                                                    name: {...this.state.payload.name, lname},
+                                                },
                                             })}
                                             placeholder='Last Name'
                                             placeholderTextColor={constants.whiteColor}
@@ -111,15 +120,14 @@ class Signup extends React.Component {
                                                 marginTop: 30,
                                                 marginRight: 25,
                                                 paddingLeft: 10,
-                                                flex:1,
-                                                height: 40,
+                                                flex: 1,
                                                 fontSize: 15,
                                                 backgroundColor: 'rgba(0,0,0,0.02)',
                                                 borderColor: constants.greenColor,
                                                 borderRadius: 7,
                                                 borderWidth: 1,
                                                 marginHorizontal: 0,
-                                                color: constants.whiteColor
+                                                color: constants.whiteColor,
 
                                             }}
                                         />
@@ -131,21 +139,20 @@ class Signup extends React.Component {
                                             underlineColorAndroid='transparent'
                                             onChangeText={email => this.setState({
                                                 ...this.state,
-                                                payload: {...this.state.payload, email}
+                                                payload: {...this.state.payload, email},
                                             })}
                                             value={this.state.payload.email}
                                             style={{
                                                 marginTop: 10,
                                                 paddingLeft: 10,
                                                 width: WIDTH - 55,
-                                                height: 40,
                                                 fontSize: 15,
                                                 backgroundColor: 'rgba(0,0,0,0.02)',
                                                 borderColor: constants.greenColor,
                                                 borderRadius: 7,
                                                 borderWidth: 1,
                                                 marginHorizontal: 25,
-                                                color: constants.whiteColor
+                                                color: constants.whiteColor,
                                             }}/>
                                         <TextInput
                                             secureTextEntry
@@ -154,44 +161,41 @@ class Signup extends React.Component {
                                             underlineColorAndroid='transparent'
                                             onChangeText={password => this.setState({
                                                 ...this.state,
-                                                payload: {...this.state.payload, password}
+                                                payload: {...this.state.payload, password},
                                             })}
                                             value={this.state.payload.password}
                                             style={{
                                                 marginTop: 10,
                                                 paddingLeft: 10,
                                                 width: WIDTH - 55,
-                                                height: 40,
                                                 fontSize: 15,
                                                 backgroundColor: 'rgba(0,0,0,0.02)',
                                                 borderColor: constants.greenColor,
                                                 borderRadius: 7,
                                                 borderWidth: 1,
                                                 marginHorizontal: 25,
-                                                color: constants.whiteColor
+                                                color: constants.whiteColor,
                                             }}/>
                                         <TextInput
-                                            secureTextEntry
                                             placeholder='Ph #'
                                             placeholderTextColor={constants.whiteColor}
                                             underlineColorAndroid='transparent'
                                             onChangeText={mobile => this.setState({
                                                 ...this.state,
-                                                payload: {...this.state.payload, mobile}
+                                                payload: {...this.state.payload, mobile},
                                             })}
                                             value={this.state.payload.mobile}
                                             style={{
                                                 marginTop: 10,
                                                 paddingLeft: 10,
                                                 width: WIDTH - 55,
-                                                height: 40,
                                                 fontSize: 15,
                                                 backgroundColor: 'rgba(0,0,0,0.02)',
                                                 borderColor: constants.greenColor,
                                                 borderRadius: 7,
                                                 borderWidth: 1,
                                                 marginHorizontal: 25,
-                                                color: constants.whiteColor
+                                                color: constants.whiteColor,
                                             }}/>
 
                                         <DropDownPicker
@@ -201,21 +205,24 @@ class Signup extends React.Component {
                                             ]}
                                             defaultIndex={0}
                                             placeholder={'Select Type'}
-                                            style={{borderColor: 'green', backgroundColor:'rgba(0,0,0,0.02)'}}
+                                            style={{borderColor: 'green', backgroundColor: 'rgba(0,0,0,0.02)'}}
                                             placeholderStyle={{
                                                 color: 'rgba(0.1,0.1,0.3,0.4)'
                                             }}
                                             itemStyle={{justifyContent: 'flex-start'}}
+                                            labelStyle={{
+                                                color: '#000',
+                                            }}
                                             dropDownStyle={{backgroundColor: '#fafafa'}}
                                             containerStyle={{
-                                                height: 40,
+                                                /*height: 40,*/
                                                 width: WIDTH - 55,
                                                 marginHorizontal: 25,
-                                                marginTop: 10
+                                                marginTop: 10,
                                             }}
                                             onChangeItem={item => this.setState({
                                                 ...this.state,
-                                                payload: {...this.state.payload, type: item.value}
+                                                payload: {...this.state.payload, type: item.value},
                                             })}
                                         />
                                         <TextInput
@@ -224,21 +231,23 @@ class Signup extends React.Component {
                                             underlineColorAndroid='transparent'
                                             onChangeText={addr1 => this.setState({
                                                 ...this.state,
-                                                payload: {...this.state.payload, addr1}
+                                                payload: {
+                                                    ...this.state.payload,
+                                                    address: {...this.state.payload.address, addr1},
+                                                },
                                             })}
-                                            value={this.state.payload.addr1}
+                                            value={this.state.payload.address.addr1}
                                             style={{
                                                 marginTop: 10,
                                                 paddingLeft: 10,
                                                 width: WIDTH - 55,
-                                                height: 40,
                                                 fontSize: 15,
                                                 backgroundColor: 'rgba(0,0,0,0.02)',
                                                 borderColor: constants.greenColor,
                                                 borderRadius: 7,
                                                 borderWidth: 1,
                                                 marginHorizontal: 25,
-                                                color: constants.whiteColor
+                                                color: constants.whiteColor,
                                             }}/>
                                         <TextInput
                                             placeholder='Address line #2'
@@ -246,21 +255,25 @@ class Signup extends React.Component {
                                             underlineColorAndroid='transparent'
                                             onChangeText={addr2 => this.setState({
                                                 ...this.state,
-                                                payload: {...this.state.payload, addr2}
+                                                payload: {
+                                                    ...this.state.payload,
+                                                    address: {
+                                                        ...this.state.payload.address, addr2,
+                                                    },
+                                                },
                                             })}
-                                            value={this.state.payload.addr2}
+                                            value={this.state.payload.address.addr2}
                                             style={{
                                                 marginTop: 10,
                                                 paddingLeft: 10,
                                                 width: WIDTH - 55,
-                                                height: 40,
                                                 fontSize: 15,
                                                 backgroundColor: 'rgba(0,0,0,0.02)',
                                                 borderColor: constants.greenColor,
                                                 borderRadius: 7,
                                                 borderWidth: 1,
                                                 marginHorizontal: 25,
-                                                color: constants.whiteColor
+                                                color: constants.whiteColor,
                                             }}/>
                                         <View style={{flexDirection: 'row', marginTop: 10, marginLeft: 10}}>
                                             <DropDownPicker
@@ -268,94 +281,104 @@ class Signup extends React.Component {
                                                     {
                                                         label: 'california',
                                                         value: 'california',
-                                                        icon: () => <Icon name="flag" size={18} color="#900"/>
+                                                        icon: () => <Icon name="flag" size={18} color="#900"/>,
                                                     },
                                                     {
                                                         label: 'UK',
                                                         value: 'UK',
-                                                        icon: () => <Icon name="flag" size={18} color="#900"/>
+                                                        icon: () => <Icon name="flag" size={18} color="#900"/>,
                                                     },
                                                 ]}
                                                 defaultIndex={0}
                                                 placeholder={'Select State'}
-                                                style={{borderColor: 'green', backgroundColor:'rgba(0,0,0,0.02)'}}
+                                                style={{borderColor: 'green', backgroundColor: 'rgba(0,0,0,0.02)'}}
                                                 placeholderStyle={{
-                                                    color: 'rgba(0.1,0.1,0.3,0.4)'
+                                                    color: 'rgba(0.1,0.1,0.3,0.4)',
                                                 }}
                                                 itemStyle={{justifyContent: 'flex-start'}}
+                                                labelStyle={{
+                                                    color: '#000',
+                                                }}
                                                 dropDownStyle={{backgroundColor: '#fafafa'}}
                                                 containerStyle={{
-                                                    height: 40,
-                                                    flex:1,
-                                                    marginHorizontal: 15
+                                                    /*height: 40,*/
+                                                    flex: 1,
+                                                    marginHorizontal: 15,
                                                 }}
                                                 onChangeItem={item => this.setState({
                                                     ...this.state,
-                                                    payload: {...this.state.payload, state: item.value}
+                                                    payload: {
+                                                        ...this.state.payload,
+                                                        address: {...this.state.payload.address, state: item.value},
+                                                    },
                                                 })}
                                             />
                                             <TextInput
 
                                                 label="City"
-                                                value={this.state.payload.city}
+                                                value={this.state.payload.address.city}
                                                 onChangeText={city => this.setState({
                                                     ...this.state,
-                                                    payload: {...this.state.payload, city}
+                                                    payload: {
+                                                        ...this.state.payload,
+                                                        address: {...this.state.payload.address, city},
+                                                    },
                                                 })}
                                                 placeholder='City'
                                                 placeholderTextColor={constants.whiteColor}
                                                 underlineColorAndroid='transparent'
                                                 style={{
                                                     paddingLeft: 10,
-                                                    flex:1,
-                                                    marginRight:25,
-                                                    height: 40,
+                                                    flex: 1,
+                                                    marginRight: 25,
                                                     fontSize: 15,
                                                     backgroundColor: 'rgba(0,0,0,0.02)',
                                                     borderColor: constants.greenColor,
                                                     borderRadius: 7,
                                                     borderWidth: 1,
                                                     marginHorizontal: 0,
-                                                    color: constants.whiteColor
+                                                    color: constants.whiteColor,
 
                                                 }}
                                             />
                                         </View>
-                                        <View style={{flexDirection: 'row', marginTop: 10,marginLeft: 10}}>
+                                        <View style={{flexDirection: 'row', marginTop: 10, marginLeft: 10}}>
                                             <TextInput
                                                 label="Zip Code"
-                                                value={this.state.payload.zipcode}
+                                                value={this.state.payload.address.zipcode}
                                                 onChangeText={zipcode => this.setState({
                                                     ...this.state,
-                                                    payload: {...this.state.payload, zipcode}
+                                                    payload: {
+                                                        ...this.state.payload,
+                                                        address: {...this.state.payload.address, zipcode},
+                                                    },
                                                 })}
                                                 placeholder='Zip Code'
                                                 placeholderTextColor={constants.whiteColor}
                                                 underlineColorAndroid='transparent'
                                                 style={{
                                                     paddingLeft: 10,
-                                                    flex:0.9,
-                                                    height: 40,
+                                                    flex: 0.9,
                                                     fontSize: 15,
                                                     backgroundColor: 'rgba(0,0,0,0.02)',
                                                     borderColor: constants.greenColor,
                                                     borderRadius: 7,
                                                     borderWidth: 1,
                                                     marginHorizontal: 15,
-                                                    color: constants.whiteColor
+                                                    color: constants.whiteColor,
                                                 }}
                                             />
                                             <TextInput
-
+                                                editable={false}
                                                 label="United States"
-                                                value={this.state.payload.country}
+                                                value={this.state.payload.address.country}
                                                 placeholder='Country'
                                                 placeholderTextColor={constants.whiteColor}
                                                 underlineColorAndroid='transparent'
                                                 style={{
                                                     paddingLeft: 10,
                                                     marginRight: 25,
-                                                    flex:1,
+                                                    flex: 1,
                                                     height: 40,
                                                     fontSize: 15,
                                                     backgroundColor: 'rgba(0,0,0,0.02)',
@@ -363,7 +386,7 @@ class Signup extends React.Component {
                                                     borderRadius: 7,
                                                     borderWidth: 1,
                                                     marginHorizontal: 0,
-                                                    color: constants.whiteColor
+                                                    color: constants.whiteColor,
 
                                                 }}
                                             />
@@ -408,7 +431,7 @@ class Signup extends React.Component {
 
                                 <View>
                                     <TouchableOpacity style={{flexDirection: 'row'}}
-                                                      onPress={() => this.props.navigation.navigate('SignIn', {screen:'SignIn'})}
+                                                      onPress={() => this.props.navigation.navigate('SignIn', {screen: 'SignIn'})}
                                     >
                                         <Text style={{color: constants.whiteColor, marginTop: 10, fontSize: 12}}>
                                             Already have an account
@@ -417,7 +440,7 @@ class Signup extends React.Component {
                                             color: constants.whiteColor,
                                             marginTop: 10,
                                             fontSize: 12,
-                                            fontWeight: 'bold'
+                                            fontWeight: 'bold',
                                         }}>
                                             Login
                                         </Text>
@@ -434,7 +457,7 @@ class Signup extends React.Component {
                         </View>
                     </View>
                 </ScrollView>
-            </SafeAreaView>
+            /*</SafeAreaView>*/
 
         );
     }
@@ -457,7 +480,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
         borderRadius: 20,
-        padding: 10, marginTop: 10, marginBottom: 10
+        padding: 10, marginTop: 10, marginBottom: 10,
     },
     backgroundImageStyle: {
         flex: 1,
@@ -488,24 +511,24 @@ const styles = StyleSheet.create({
         borderRadius: 7,
         borderWidth: 1,
         marginHorizontal: 25,
-        color: constants.whiteColor
+        color: constants.whiteColor,
     },
     loginButtonStyle: {
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
     },
     textStyle: {
         color: constants.mainColor,
         paddingTop: 10,
         paddingBottom: 10,
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     buttonStyle: {
         marginTop: 10,
         flex: 1,
         alignSelf: 'stretch',
-        backgroundColor: "#2E4053",
+        backgroundColor: '#2E4053',
         marginLeft: 25,
         marginRight: 25,
         borderRadius: 5,
@@ -539,5 +562,5 @@ const styles = StyleSheet.create({
     scrollView: {
         marginHorizontal: 0,
     },
-})
+});
 export default Signup;

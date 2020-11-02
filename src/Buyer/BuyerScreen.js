@@ -69,7 +69,7 @@ class BuyerScreen extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchProducts().done();
+        this.fetchProperties().done();
         this.getCategoryList().done();
 
     }
@@ -81,11 +81,11 @@ class BuyerScreen extends React.Component {
             });
         });
     };
-    fetchProducts = async () => {
-        await new WEBAPI().getProducts().then((response) => {
+    fetchProperties = async () => {
+        await new WEBAPI().getProperties().then((response) => {
             // console.log('data response is products', response)
             this.setState({
-                shopList: response.records,
+                shopList: response,
             });
         });
     };

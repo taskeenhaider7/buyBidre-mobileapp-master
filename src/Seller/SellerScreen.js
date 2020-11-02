@@ -60,19 +60,18 @@ class SellerScreen extends React.Component {
         }
     }
     componentDidMount() {
-        this.fetchProducts()
+        this.fetchProperties()
         this.getCategoryList()
     }
     getCategoryList = async () => {
         await new WEBAPI().getCategories().then((response) => {
-            console.log(response.records)
             this.setState({
-                categoryList: response.records
+                categoryList: response
             })
         })
     }
-    fetchProducts = async () => {
-        await new WEBAPI().getProducts().then((response) => {
+    fetchProperties = async () => {
+        await new WEBAPI().getProperties().then((response) => {
             console.log('data response is products', response)
             this.setState({
                 shopList: response.records

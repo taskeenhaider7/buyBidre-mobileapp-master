@@ -1,32 +1,34 @@
-import RNFetchBlob from 'rn-fetch-blob'
+import RNFetchBlob from 'rn-fetch-blob';
 
 export class WEBAPI {
 
     // HOST_NAME
-    HOST_NAME = "https://buybidre.com/api/"
+    HOST_NAME = "https://buybidre.com/api/api/"
+    //HOST_NAME = 'http://192.168.10.6:8000/api/';
 
     //END POINTS
 
-    //GET TOKEN
-    _GET_PRODUCTS = 'product/read.php';
+    //PROPERTIES BASE URL
+    PROPERTIES_BASE_URL = 'properties';
+
+    UPLOAD_PROPERTY_URL = '/upload';
 
     //GET CATEGORIES
-    _GET_CATEGORIES = 'category/read.php';
+    CATEGORIES_BASE_URL = 'categories';
 
     //LOGIN
-    LOGIN = 'users/login.php'
+    LOGIN = 'login';
 
     //SIGNUP
-    SIGNUP = 'users/create.php'
-
-    //CREATE PRODUCT
-    POST_DATA = "product/create.php"
+    REGISTER = 'register';
 
     async sendRequest(url, request) {
         try {
             let response = await fetch(url, request);
+            console.log(response);
             let responseJson = await response.json();
-            console.log("responseJson ", responseJson);
+            //alert("here")
+            console.log('responseJson ', responseJson);
             return responseJson;
         } catch (error) {
             let err = [];
@@ -38,9 +40,11 @@ export class WEBAPI {
     }
 
     async sendRequestIMAGES(url, header, body) {
+        console.log(body);
         try {
-            let response = await RNFetchBlob.fetch('POST', url, header, body)
+            let response = await RNFetchBlob.fetch('POST', url, header, body);
             let responseJson = await response.json();
+            console.log('upload file response ', responseJson);
             return responseJson;
         } catch (error) {
             let err = [];
@@ -52,25 +56,42 @@ export class WEBAPI {
 
     login(data) {
         let url = `${this.HOST_NAME}${this.LOGIN}`;
-        console.log("url ", url);
+        console.log('url ', url);
         let request = {
             body: JSON.stringify(data),
             method: 'post',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
         };
         return this.sendRequest(url, request);
     }
 
     signup(data) {
-        let url = `${this.HOST_NAME}${this.SIGNUP}`;
+        let url = `${this.HOST_NAME}${this.REGISTER}`;
+        console.log(url);
         let request = {
             body: JSON.stringify(data),
             method: 'post',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+        };
+
+        console.log(request);
+        return this.sendRequest(url, request);
+    }
+
+    getProperties() {
+        let url = `${this.HOST_NAME}${this.PROPERTIES_BASE_URL}`;
+        let request = {
+            method: 'GET',
         };
         return this.sendRequest(url, request);
     }
 
-    getProducts() {
-        let url = `${this.HOST_NAME}${this._GET_PRODUCTS}`;
+    getMyProperties(userId) {
+        let url = `${this.HOST_NAME}${this.PROPERTIES_BASE_URL + userId}`;
         let request = {
             method: 'GET',
         };
@@ -78,16 +99,30 @@ export class WEBAPI {
     }
 
     getCategories() {
-        let url = `${this.HOST_NAME}${this._GET_CATEGORIES}`;
+        let url = `${this.HOST_NAME}${this.CATEGORIES_BASE_URL}`;
         let request = {
             method: 'GET',
         };
         return this.sendRequest(url, request);
     }
 
-    postData(data) {
-        let url = `${this.HOST_NAME}${this.POST_DATA}`;
-        return this.sendRequestIMAGES(url,'',data);
+    addProperty(data) {
+        let url = `${this.HOST_NAME}${this.PROPERTIES_BASE_URL}`;
+        let request = {
+            body: JSON.stringify(data),
+            method: 'post',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
+        };
+        console.log(request);
+        return this.sendRequest(url, request);
+    }
+
+    uploadFile(data, id) {
+        let url = `${this.HOST_NAME}${this.PROPERTIES_BASE_URL}${this.UPLOAD_PROPERTY_URL}/${id}`;
+        console.log(url);
+        return this.sendRequestIMAGES(url, '', data);
     }
 
 }

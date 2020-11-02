@@ -19,28 +19,19 @@ class MyProperties extends React.Component {
 
     componentDidMount() {
         this.getUserInfo().done()
-        this.fetchProducts().done()
-
     }
 
     async getUserInfo() {
         const user = await AsyncStorage.getItem('response');
         const responseObj = JSON.parse(user)
-        console.log(responseObj.uid)
+        this.fetchMyProperties(responseObj.ID).done()
     }
 
-    fetchProducts = async () => {
-        await new WEBAPI().getProducts().then((response) => {
-            AsyncStorage.getItem('response').then((user) => {
-                const responseObj = JSON.parse(user)
-                console.log(responseObj.uid)
-                // this.setState({
-                //     shopList: response.records.filter(item => {item.userId, responseObj.uid})
-                // })
-                this.setState({
-                    shopList: response.records
-                })
-            });
+    fetchMyProperties = async (id) => {
+        await new WEBAPI().getMyProperties(id).then((response) => {
+            this.setState({
+                shopList: response.records
+            })
 
         })
     }
