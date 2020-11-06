@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,22 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* buyBidreRETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* buyBidreRETests.m */; };
+		55D6CCB7255542E9004BFC08 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 270DECA43A7442649C0684A1 /* AntDesign.ttf */; };
+		55D6CCB8255542E9004BFC08 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDB9B6F32220453AA0432B2C /* Entypo.ttf */; };
+		55D6CCB9255542E9004BFC08 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EABCEDB766C240BEA991A1EC /* EvilIcons.ttf */; };
+		55D6CCBA255542E9004BFC08 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67B72F8BD1074BBAA4416783 /* Feather.ttf */; };
+		55D6CCBB255542E9004BFC08 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF1DDD84044908BB000CA5 /* FontAwesome.ttf */; };
+		55D6CCBC255542E9004BFC08 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5836B36A2828441A94976136 /* FontAwesome5_Brands.ttf */; };
+		55D6CCBD255542E9004BFC08 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80D17915331F40F9964F9780 /* FontAwesome5_Regular.ttf */; };
+		55D6CCBE255542E9004BFC08 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6A3E4D478E041D492CF75A1 /* FontAwesome5_Solid.ttf */; };
+		55D6CCBF255542E9004BFC08 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8422553F42C64D3FBA020D99 /* Fontisto.ttf */; };
+		55D6CCC0255542E9004BFC08 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEBE8D8CFD2B4A8AAD652871 /* Foundation.ttf */; };
+		55D6CCC1255542E9004BFC08 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC43871935B04662B7A72917 /* Ionicons.ttf */; };
+		55D6CCC2255542E9004BFC08 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46C6A70AF42D44E9B5CCFE4F /* MaterialCommunityIcons.ttf */; };
+		55D6CCC3255542E9004BFC08 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 539D749C829846F7A1538751 /* MaterialIcons.ttf */; };
+		55D6CCC4255542E9004BFC08 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE726BD43BA54C7EA70C657C /* Octicons.ttf */; };
+		55D6CCC5255542E9004BFC08 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAD43CE6752849139AD051B3 /* SimpleLineIcons.ttf */; };
+		55D6CCC6255542E9004BFC08 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D331E2F7E21240AEA1469DD3 /* Zocial.ttf */; };
 		5DA1C8DDA1D50385BDF96AA5 /* libPods-buyBidreRE-buyBidreRETests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E8E3729EB82363D83964EA /* libPods-buyBidreRE-buyBidreRETests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		DF0BFD30D79C6192143D93FB /* libPods-buyBidreRE-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1A19137DA58F2BA07D8C09 /* libPods-buyBidreRE-tvOS.a */; };
@@ -51,22 +67,38 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = buyBidreRE/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = buyBidreRE/main.m; sourceTree = "<group>"; };
 		18767817A2DE7D61B48978C7 /* Pods-buyBidreRE-buyBidreRETests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buyBidreRE-buyBidreRETests.debug.xcconfig"; path = "Target Support Files/Pods-buyBidreRE-buyBidreRETests/Pods-buyBidreRE-buyBidreRETests.debug.xcconfig"; sourceTree = "<group>"; };
+		270DECA43A7442649C0684A1 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* buyBidreRE-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "buyBidreRE-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* buyBidreRE-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "buyBidreRE-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46C6A70AF42D44E9B5CCFE4F /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		46E8E3729EB82363D83964EA /* libPods-buyBidreRE-buyBidreRETests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-buyBidreRE-buyBidreRETests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		509C58E23F376BD9BDA1E262 /* libPods-buyBidreRE-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-buyBidreRE-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50EC8813C030A1D0EDAC196E /* libPods-buyBidreRE.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-buyBidreRE.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		539D749C829846F7A1538751 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		5836B36A2828441A94976136 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		5A26BEEB45E94BE2011D42FB /* Pods-buyBidreRE-buyBidreRETests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buyBidreRE-buyBidreRETests.release.xcconfig"; path = "Target Support Files/Pods-buyBidreRE-buyBidreRETests/Pods-buyBidreRE-buyBidreRETests.release.xcconfig"; sourceTree = "<group>"; };
+		67B72F8BD1074BBAA4416783 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		7AEF1DDD84044908BB000CA5 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		80D17915331F40F9964F9780 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = buyBidreRE/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8422553F42C64D3FBA020D99 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		84AA35209FD25BC3129E0A3C /* Pods-buyBidreRE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buyBidreRE.release.xcconfig"; path = "Target Support Files/Pods-buyBidreRE/Pods-buyBidreRE.release.xcconfig"; sourceTree = "<group>"; };
 		855F95B38526209C1B2A0AB2 /* Pods-buyBidreRE-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buyBidreRE-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-buyBidreRE-tvOS/Pods-buyBidreRE-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8BFEE35125E19A445FECA013 /* Pods-buyBidreRE-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buyBidreRE-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-buyBidreRE-tvOSTests/Pods-buyBidreRE-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A32499DCBA16915BE39E217B /* Pods-buyBidreRE-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buyBidreRE-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-buyBidreRE-tvOSTests/Pods-buyBidreRE-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		BC43871935B04662B7A72917 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		BD0946A15A21D956B4175A0B /* Pods-buyBidreRE-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buyBidreRE-tvOS.release.xcconfig"; path = "Target Support Files/Pods-buyBidreRE-tvOS/Pods-buyBidreRE-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		BDB9B6F32220453AA0432B2C /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		D331E2F7E21240AEA1469DD3 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		EABCEDB766C240BEA991A1EC /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		EAD43CE6752849139AD051B3 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		EC1A19137DA58F2BA07D8C09 /* libPods-buyBidreRE-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-buyBidreRE-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F627BB5545F1F6403D576D76 /* Pods-buyBidreRE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buyBidreRE.debug.xcconfig"; path = "Target Support Files/Pods-buyBidreRE/Pods-buyBidreRE.debug.xcconfig"; sourceTree = "<group>"; };
+		F6A3E4D478E041D492CF75A1 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		FE726BD43BA54C7EA70C657C /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		FEBE8D8CFD2B4A8AAD652871 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +157,6 @@
 		13B07FAE1A68108700A75B9A /* buyBidreRE */ = {
 			isa = PBXGroup;
 			children = (
-				554A73FC25542C2200E27F70 /* Resources */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -135,6 +166,29 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = buyBidreRE;
+			sourceTree = "<group>";
+		};
+		2A7C397CB7E34A8EACB36D23 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				270DECA43A7442649C0684A1 /* AntDesign.ttf */,
+				BDB9B6F32220453AA0432B2C /* Entypo.ttf */,
+				EABCEDB766C240BEA991A1EC /* EvilIcons.ttf */,
+				67B72F8BD1074BBAA4416783 /* Feather.ttf */,
+				7AEF1DDD84044908BB000CA5 /* FontAwesome.ttf */,
+				5836B36A2828441A94976136 /* FontAwesome5_Brands.ttf */,
+				80D17915331F40F9964F9780 /* FontAwesome5_Regular.ttf */,
+				F6A3E4D478E041D492CF75A1 /* FontAwesome5_Solid.ttf */,
+				8422553F42C64D3FBA020D99 /* Fontisto.ttf */,
+				FEBE8D8CFD2B4A8AAD652871 /* Foundation.ttf */,
+				BC43871935B04662B7A72917 /* Ionicons.ttf */,
+				46C6A70AF42D44E9B5CCFE4F /* MaterialCommunityIcons.ttf */,
+				539D749C829846F7A1538751 /* MaterialIcons.ttf */,
+				FE726BD43BA54C7EA70C657C /* Octicons.ttf */,
+				EAD43CE6752849139AD051B3 /* SimpleLineIcons.ttf */,
+				D331E2F7E21240AEA1469DD3 /* Zocial.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -148,13 +202,6 @@
 				509C58E23F376BD9BDA1E262 /* libPods-buyBidreRE-tvOSTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		554A73FC25542C2200E27F70 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -173,6 +220,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				DD23AD0359F7334170087A12 /* Pods */,
+				2A7C397CB7E34A8EACB36D23 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -348,6 +396,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55D6CCB7255542E9004BFC08 /* AntDesign.ttf in Resources */,
+				55D6CCB8255542E9004BFC08 /* Entypo.ttf in Resources */,
+				55D6CCB9255542E9004BFC08 /* EvilIcons.ttf in Resources */,
+				55D6CCBA255542E9004BFC08 /* Feather.ttf in Resources */,
+				55D6CCBB255542E9004BFC08 /* FontAwesome.ttf in Resources */,
+				55D6CCBC255542E9004BFC08 /* FontAwesome5_Brands.ttf in Resources */,
+				55D6CCBD255542E9004BFC08 /* FontAwesome5_Regular.ttf in Resources */,
+				55D6CCBE255542E9004BFC08 /* FontAwesome5_Solid.ttf in Resources */,
+				55D6CCBF255542E9004BFC08 /* Fontisto.ttf in Resources */,
+				55D6CCC0255542E9004BFC08 /* Foundation.ttf in Resources */,
+				55D6CCC1255542E9004BFC08 /* Ionicons.ttf in Resources */,
+				55D6CCC2255542E9004BFC08 /* MaterialCommunityIcons.ttf in Resources */,
+				55D6CCC3255542E9004BFC08 /* MaterialIcons.ttf in Resources */,
+				55D6CCC4255542E9004BFC08 /* Octicons.ttf in Resources */,
+				55D6CCC5255542E9004BFC08 /* SimpleLineIcons.ttf in Resources */,
+				55D6CCC6255542E9004BFC08 /* Zocial.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
@@ -383,7 +447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		284585E713B35EA043512F17 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -539,50 +603,19 @@
 		};
 		D46EAE3062F0E009568EC07E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			alwaysOutOfDate = 1;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-buyBidreRE/Pods-buyBidreRE-resources.sh",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-buyBidreRE/Pods-buyBidreRE-resources.sh\"\n";
 			showEnvVarsInLog = 0;
@@ -690,7 +723,11 @@
 				);
 				INFOPLIST_FILE = buyBidreRETests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -711,7 +748,11 @@
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = buyBidreRETests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -733,7 +774,10 @@
 				DEVELOPMENT_TEAM = 3FPX7683L7;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = buyBidreRE/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -756,7 +800,10 @@
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 3FPX7683L7;
 				INFOPLIST_FILE = buyBidreRE/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -783,7 +830,10 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "buyBidreRE-tvOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -811,7 +861,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "buyBidreRE-tvOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -838,7 +891,11 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "buyBidreRE-tvOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -865,7 +922,11 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "buyBidreRE-tvOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -928,7 +989,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
@@ -982,7 +1046,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
